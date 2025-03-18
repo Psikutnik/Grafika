@@ -2,7 +2,7 @@ extends Node3D
 
 
 const SPEED = 100.0
-const BULLET_DAMAGE = 2.0
+const BULLET_DAMAGE = 1.0
 
 
 @onready var mesh = $MeshInstance3D

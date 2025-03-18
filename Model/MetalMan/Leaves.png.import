@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c46b6wsm4ymg6"
-path.s3tc="res://.godot/imported/Wood_15-128x128.png-8378a65e8ec3dd54e88dc9e80978614c.s3tc.ctex"
+uid="uid://7c7xkd7enbu8"
+path.s3tc="res://.godot/imported/Leaves.png-d9b48fdb1aed090d455a621e88d668fa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/world/Wood_15-128x128.png"
-dest_files=["res://.godot/imported/Wood_15-128x128.png-8378a65e8ec3dd54e88dc9e80978614c.s3tc.ctex"]
+source_file="res://Model/MetalMan/Leaves.png"
+dest_files=["res://.godot/imported/Leaves.png-d9b48fdb1aed090d455a621e88d668fa.s3tc.ctex"]
 
 [params]
 

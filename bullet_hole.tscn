@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cshhr3ucsat4h"]
+
+[ext_resource type="Texture2D" uid="uid://drxpo6xa1q5se" path="res://assets/textures/SHEART.png" id="1_guucc"]
+
+[node name="BulletHole" type="Decal"]
+size = Vector3(0.2, 0.2, 0.2)
+texture_albedo = ExtResource("1_guucc")
+modulate = Color(0, 0, 0, 1)

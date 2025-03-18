@@ -23,6 +23,15 @@ var bullet = preload("res://bullet.tscn")
 var bullet_trail = load("res://bullet_trail.tscn")
 var instance
 
+# Weapon switching
+enum weapons {
+	PRISM,
+	BALL
+}
+var weapon = weapons.PRISM
+var can_shoot = true
+@onready var weapon_switching = $Head/Camera3D/WeaponSwitching
+
 # Signal
 signal player_hit
 
@@ -34,10 +43,12 @@ signal player_hit
 #GunBall
 @onready var gun_anim = $Head/Camera3D/GunBall/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/GunBall/RayCast3D
+@onready var gun_flash = $Head/Camera3D/GunBall/MuzzleFlash
 var bullets_in_chamber = 0
 # GunPrism
 @onready var prism_anim = $Head/Camera3D/Hand/GunPrism/AnimationPlayer
 @onready var prism_barrel = $Head/Camera3D/Hand/GunPrism/Barrel
+@onready var prism_flash = $Head/Camera3D/Hand/GunPrism/MuzzleFlash
 @onready var p_ray1 = $Head/Camera3D/PrismRays/PRay1
 @onready var p_ray2 = $Head/Camera3D/PrismRays/PRay2
 @onready var p_ray3 =$Head/Camera3D/PrismRays/PRay3
@@ -106,8 +117,20 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	if Input.is_action_pressed("shoot"):
-		shoot_gun_ball()
+	# Shooting
+	if Input.is_action_pressed("shoot") and can_shoot:
+		match weapon:
+			weapons.BALL:
+				shoot_gun_ball()
+			weapons.PRISM:
+				shoot_prism()
+	
+		# Weapon Switching
+	if Input.is_action_just_pressed("weapon1") and weapon != weapons.BALL and !prism_anim.is_playing():
+		bullets_in_chamber = 0
+		_raise_weapon(weapons.BALL)
+	if Input.is_action_just_pressed("weapon2") and weapon != weapons.PRISM and !gun_anim.is_playing():
+		_raise_weapon(weapons.PRISM)
 
 
 func _headbob(time) -> Vector3:
@@ -121,6 +144,10 @@ func hit(dir):
 	emit_signal("player_hit")
 	velocity += dir * 8.0
 
+func flash(f):
+	f.show()
+	await get_tree().create_timer(0.1).timeout
+	f.hide()
 
 func shoot_gun_ball():
 	if(!gun_anim.is_playing()):
@@ -128,12 +155,18 @@ func shoot_gun_ball():
 			bullets_in_chamber += 1
 			gun_anim.speed_scale = 0.8
 			gun_anim.play("Shoot")
-			for i in range(1):
-				instance = bullet.instantiate()
-				instance.position = gun_barrel.global_position + Vector3(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1),randf_range(-0.1, 0.1))
-				instance.transform.basis = gun_barrel.global_transform.basis
-				get_parent().add_child(instance)
-				shaker.play_shake()
+			flash(gun_flash)
+			if main_ray.is_colliding():
+				for i in range(1):
+					var instance = bullet_trail.instantiate()
+					get_parent().add_child(instance)
+					instance.init(gun_barrel.global_position, main_ray.get_collision_point())
+					if main_ray.get_collider().is_in_group("enemy"):
+						main_ray.get_collider().hit(1)
+						instance.trigger_particles(main_ray.get_collision_point(), gun_barrel.global_position, true)
+					else:
+						instance.trigger_particles(main_ray.get_collision_point(), gun_barrel.global_position, false)
+					shaker.play_shake()
 		else:
 			gun_anim.speed_scale = 1
 			gun_anim.play("Reload")
@@ -153,8 +186,32 @@ func shoot_prism():
 				get_parent().add_child(instance)
 				instance.init(prism_barrel.global_position, ray.get_collision_point())
 				if ray.get_collider().is_in_group("enemy"):
-					ray.get_collider().hit(0.55)
-					# instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, true)
+					ray.get_collider().hit(0.45)
+					instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, true)
 				else:
-					pass
-					# instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, false)
+					instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, false)
+			else:
+				pass
+				#napraw to później
+				#instance.init(prism_barrel.global_position, ray_end.global_position)
+				#get_parent().add_child(instance)
+
+func _lower_weapon():
+	match weapon:
+		weapons.BALL:
+			weapon_switching.play("LowerBall")
+		weapons.PRISM:
+			weapon_switching.play("LowerPrism")
+
+
+func _raise_weapon(new_weapon):
+	can_shoot = false
+	_lower_weapon()
+	await get_tree().create_timer(0.3).timeout
+	match new_weapon:
+		weapons.BALL:
+			weapon_switching.play_backwards("LowerBall")
+		weapons.PRISM:
+			weapon_switching.play_backwards("LowerPrism")
+	weapon = new_weapon
+	can_shoot = true
