@@ -1,0 +1,159 @@
+[gd_scene load_steps=18 format=3 uid="uid://jms146wx5rqi"]
+
+[ext_resource type="Script" uid="uid://claw1jona2q4p" path="res://Model/TigerRocketeer/tiger_rocketeer.gd" id="1_12q4g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7jcv"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jpu85"]
+
+[sub_resource type="Animation" id="Animation_vxyuv"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_hit_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fno3c"]
+resource_name = "Die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iae3l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.855084, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_12q4g"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.166774, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqjxv"]
+_data = {
+&"Attack": SubResource("Animation_vxyuv"),
+&"Die": SubResource("Animation_fno3c"),
+&"RESET": SubResource("Animation_iae3l"),
+&"Walk": SubResource("Animation_12q4g")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uer6d"]
+albedo_color = Color(0.628884, 0.767708, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o7ynq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12q4g"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_12q4g"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iae3l"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxyuv"]
+advance_mode = 2
+advance_condition = &"Attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fno3c"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oqjxv"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_iae3l"]
+states/Attack/node = SubResource("AnimationNodeAnimation_12q4g")
+states/Attack/position = Vector2(545, 100)
+states/Walk/node = SubResource("AnimationNodeAnimation_iae3l")
+states/Walk/position = Vector2(389, 100)
+transitions = ["Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_vxyuv"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_fno3c"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_oqjxv")]
+
+[node name="TigerRocketeer" type="CharacterBody3D"]
+script = ExtResource("1_12q4g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.855084, 0)
+material_override = SubResource("StandardMaterial3D_q7jcv")
+mesh = SubResource("CapsuleMesh_jpu85")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshInstance3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_oqjxv")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.900427, 0, 0, 0, 1, 0, 0, 0, 1.01897, 0, 0.403083, -0.0857978)
+material_override = SubResource("StandardMaterial3D_uer6d")
+mesh = SubResource("SphereMesh_o7ynq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_12q4g")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../MeshInstance3D")
+tree_root = SubResource("AnimationNodeStateMachine_iae3l")
+anim_player = NodePath("../MeshInstance3D/AnimationPlayer")
+parameters/conditions/Attack = false
+parameters/conditions/Walk = false
+
+[node name="RocketBarrel" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.621876)
+target_position = Vector3(0, 0, -1)

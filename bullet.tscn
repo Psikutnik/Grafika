@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm2guqf661a6p"]
+[gd_scene load_steps=8 format=3 uid="uid://cm2guqf661a6p"]
 
 [ext_resource type="Script" uid="uid://27bddwgpgetw" path="res://bullet.gd" id="1_l8b62"]
+[ext_resource type="AudioStream" uid="uid://ciuayccpjtq0y" path="res://Sounds/static-noise-194184.mp3" id="2_v8qja"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_c8dg4"]
 size = Vector3(0.1, 0.1, 1)
@@ -35,7 +36,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4d7sq")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.544114)
 target_position = Vector3(0, 0, -1)
-collision_mask = 2
+collision_mask = 3
 collide_with_areas = true
 debug_shape_thickness = 5
 
@@ -50,5 +51,12 @@ draw_pass_1 = SubResource("BoxMesh_f26ls")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_v8qja")
+volume_db = -10.0
+unit_size = 4.0
+pitch_scale = 4.0
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

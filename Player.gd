@@ -18,6 +18,9 @@ const FOV_CHANGE = 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
 
+#scale
+var isCrouch = false
+
 # Bullets
 var bullet = preload("res://bullet.tscn")
 var bullet_trail = load("res://bullet_trail.tscn")
@@ -25,27 +28,37 @@ var instance
 
 # Weapon switching
 enum weapons {
-	PRISM,
-	BALL
+	BALL,
+	PRISM
 }
+
+var weapon_availability = {
+	weapons.BALL: true,
+	weapons.PRISM: false
+}
+
 var weapon = weapons.PRISM
 var can_shoot = true
 @onready var weapon_switching = $Head/Camera3D/WeaponSwitching
 
 # Signal
 signal player_hit
+signal show_ammo
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var audio = $Head/AudioStreamPlayer3D
 @onready var main_ray = $Head/Camera3D/MainRay
 @onready var ray_end = $Head/Camera3D/RayEnd
 @onready var shaker: ShakerComponent3D = $Head/Camera3D/ShakerComponent3D
 #GunBall
+var gun_ammo = 100
+var bullets_in_chamber = 0
 @onready var gun_anim = $Head/Camera3D/GunBall/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/GunBall/RayCast3D
 @onready var gun_flash = $Head/Camera3D/GunBall/MuzzleFlash
-var bullets_in_chamber = 0
 # GunPrism
+var prism_ammo = 66
 @onready var prism_anim = $Head/Camera3D/Hand/GunPrism/AnimationPlayer
 @onready var prism_barrel = $Head/Camera3D/Hand/GunPrism/Barrel
 @onready var prism_flash = $Head/Camera3D/Hand/GunPrism/MuzzleFlash
@@ -89,9 +102,35 @@ func _physics_process(delta):
 	# Handle Sprint.
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
-	else:
+	elif isCrouch == false:
 		speed = WALK_SPEED
-
+	
+	# Crouch
+	if Input.is_action_just_pressed("crouch") and isCrouch == false:
+		scale /= 2
+		isCrouch = true
+	elif Input.is_action_just_pressed("crouch")and isCrouch == true:
+		scale *= 2
+		speed = WALK_SPEED
+		camera.rotation = camera.rotation.lerp(Vector3.ZERO, 1.0)
+		isCrouch = false
+	
+	if isCrouch == true and not is_on_floor():
+		speed = WALK_SPEED * 2
+		speed *= 1.05
+		
+		if Input.is_action_pressed("right"):
+			camera.rotate(Vector3.FORWARD,speed * 0.0005)
+		if Input.is_action_pressed("left"):
+			camera.rotate(-Vector3.FORWARD,speed * 0.0005)
+		if Input.is_action_pressed("up"):
+			camera.rotate(-Vector3.RIGHT,speed * 0.0005)
+		if Input.is_action_pressed("down"):
+			camera.rotate(Vector3.RIGHT,speed * 0.0005)
+		
+	elif isCrouch == true and is_on_floor():
+		speed = WALK_SPEED/2
+	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -121,15 +160,19 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot") and can_shoot:
 		match weapon:
 			weapons.BALL:
-				shoot_gun_ball()
+				if gun_ammo > 0:
+					shoot_gun_ball()
 			weapons.PRISM:
-				shoot_prism()
+				if prism_ammo > 0:
+					shoot_prism()
 	
 		# Weapon Switching
-	if Input.is_action_just_pressed("weapon1") and weapon != weapons.BALL and !prism_anim.is_playing():
+	if Input.is_action_just_pressed("weapon1") and weapon != weapons.BALL and !prism_anim.is_playing() and weapon_availability[weapons.BALL] == true:
 		bullets_in_chamber = 0
+		emit_signal("show_ammo",gun_ammo)
 		_raise_weapon(weapons.BALL)
-	if Input.is_action_just_pressed("weapon2") and weapon != weapons.PRISM and !gun_anim.is_playing():
+	if Input.is_action_just_pressed("weapon2") and weapon != weapons.PRISM and !gun_anim.is_playing() and weapon_availability[weapons.PRISM] == true:
+		emit_signal("show_ammo",prism_ammo)
 		_raise_weapon(weapons.PRISM)
 
 
@@ -140,9 +183,13 @@ func _headbob(time) -> Vector3:
 	return pos
 
 
-func hit(dir):
-	emit_signal("player_hit")
-	velocity += dir * 8.0
+func hit(dir, damage):
+	if damage < 0:
+		audio.play()
+		emit_signal("player_hit", damage)
+	else:
+		emit_signal("player_hit", damage)
+		velocity += dir * 8.0
 
 func flash(f):
 	f.show()
@@ -151,10 +198,12 @@ func flash(f):
 
 func shoot_gun_ball():
 	if(!gun_anim.is_playing()):
-		if (bullets_in_chamber <= 6):
+		if (bullets_in_chamber < 6):
 			bullets_in_chamber += 1
 			gun_anim.speed_scale = 0.8
 			gun_anim.play("Shoot")
+			gun_ammo = gun_ammo - 1
+			emit_signal("show_ammo",gun_ammo)
 			flash(gun_flash)
 			if main_ray.is_colliding():
 				for i in range(1):
@@ -176,6 +225,8 @@ func shoot_prism():
 	if !prism_anim.is_playing():
 		prism_anim.speed_scale = 0.8
 		prism_anim.play("Shoot")
+		prism_ammo = prism_ammo - 1
+		emit_signal("show_ammo",prism_ammo)
 		# Tablica z raycastami
 		var rays = [p_ray1, p_ray2, p_ray3, p_ray4, p_ray5, p_ray6, p_ray7, p_ray8, p_ray9, p_ray10, p_ray11, p_ray12, p_ray13, p_ray14, p_ray15]
 		
@@ -186,7 +237,7 @@ func shoot_prism():
 				get_parent().add_child(instance)
 				instance.init(prism_barrel.global_position, ray.get_collision_point())
 				if ray.get_collider().is_in_group("enemy"):
-					ray.get_collider().hit(0.45)
+					ray.get_collider().hit(0.65)
 					instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, true)
 				else:
 					instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, false)
@@ -215,3 +266,21 @@ func _raise_weapon(new_weapon):
 			weapon_switching.play_backwards("LowerPrism")
 	weapon = new_weapon
 	can_shoot = true
+
+# jest problem że jak trzymasz np pistolet a podniesiesz ammo shotguna to zacznie ci wyswietlac ammo shotunge
+func collect_ammo(type,amount):
+	if type == "P":
+		audio.play()
+		prism_ammo = prism_ammo + amount
+		emit_signal("show_ammo",prism_ammo)
+	if type == "G":
+		audio.play()
+		gun_ammo = gun_ammo + amount
+		emit_signal("show_ammo",gun_ammo)
+
+func collect_weapon(weapon: int, is_available: bool) -> void:
+	if weapon in weapons.values():
+		weapon_availability[weapon] = is_available
+		print("Broń ", weapons.keys()[weapon], " jest teraz ", "dostępna" if is_available else "niedostępna")
+	else:
+		print("Nieprawidłowy indeks broni!")

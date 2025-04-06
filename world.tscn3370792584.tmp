@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://bur2gipe8sjjf"]
+[gd_scene load_steps=79 format=4 uid="uid://bur2gipe8sjjf"]
 
 [ext_resource type="Script" uid="uid://cs0hqjk8lqo3v" path="res://world.gd" id="1_b4b3y"]
 [ext_resource type="Script" uid="uid://bs7lqdh6y4cj0" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_y0a7c"]
@@ -11,14 +11,13 @@
 [ext_resource type="Script" uid="uid://bxyelwdabb263" path="res://Player.gd" id="7_24w7t"]
 [ext_resource type="PackedScene" uid="uid://c2dtp082jtuyx" path="res://Model/MetalMan/metal_man.tscn" id="9_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://chcxaok64htpj" path="res://gun_prism.tscn" id="9_c222f"]
-[ext_resource type="AudioStream" uid="uid://divvuk721yywq" path="res://Sounds/item-equip-6904.mp3" id="9_cbp6q"]
 [ext_resource type="Script" uid="uid://ojuwhh8qtrkr" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="10_8g2w1"]
-[ext_resource type="PackedScene" uid="uid://3o3jr3dl0svo" path="res://weapon_pickup.tscn" id="10_bc84e"]
 [ext_resource type="Script" uid="uid://c7hxr1h8gyvha" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="11_6lhi6"]
 [ext_resource type="Script" uid="uid://cfbktqrhokj3k" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="12_h56m2"]
 [ext_resource type="Script" uid="uid://cww3q758k6rm4" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="13_dxnol"]
 [ext_resource type="PackedScene" uid="uid://dfexgn02ws8yr" path="res://Model/Manequin/manequin.tscn" id="14_tpl1h"]
 [ext_resource type="PackedScene" uid="uid://jms146wx5rqi" path="res://Model/TigerRocketeer/tiger_rocketeer.tscn" id="15_udxuc"]
+[ext_resource type="PackedScene" uid="uid://dbclh0ntlwfyo" path="res://Health_100.tscn" id="18_ikiii"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4bcb7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -206,25 +205,9 @@ _data = {
 &"RESET": SubResource("Animation_udxuc")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_udxuc"]
-font_size = 50
-font_color = Color(1, 0.368627, 0.392157, 1)
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ikiii"]
-font_size = 50
-font_color = Color(1, 0.901961, 0.466667, 1)
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ikiii"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cbp6q"]
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_gelxn"]
-vertices = PackedVector3Array(11.75, 13.5, -59.5, 15, 13.5, -59.25, 15, 13.5, -62.5, 11.75, 13.5, -62.5, 83.75, 12.5, -62.5, 83.75, 12.5, -59.25, 87, 12.5, -59.25, 87, 12.5, -62.5, 13, 4.5, -60.25, 13, 4.5, -59.5, 14.75, 4.5, -59.5, 14.75, 4.5, -60.25, 13, 4.5, -41.5, 18.25, 4.5, -41.25, 18.5, 4.5, -43, 15.75, 4.5, -58.25, 13, 4.5, -58.25, 23, 4.5, -40.75, 30.25, 4.5, -40.75, 30.25, 4.5, -42.75, 22.75, 4.5, -43, 32, 4.5, -43, 31.75, 4.5, -60.25, 16, 4.5, -60.25, 33.25, 4.5, -43, 33.5, 4.5, -60.25, 35, 4.5, -22, 33.25, 4.5, -21.75, 33.5, 4.5, -13.5, 49.75, 4.5, -13.5, 35, 4.5, -38.5, 32.75, 4.5, -38.25, 32.75, 4.5, -26.5, 35, 4.5, -26.25, 85.75, 4.5, -12.75, 83, 4.5, -58.25, 82.75, 4.5, -60.25, 35, 4.5, -42.75, 85.75, 4.5, -58.25, 50, 4.5, -12.75, 84, 4.5, -60.25, 84, 4.5, -59.5, 85.75, 4.5, -59.5, 85.75, 4.5, -60.25, 22, 10.5, -39.25, 22.5, 10.5, -39.5, 22.5, 10.5, -42, 19.25, 10.5, -42, 19.25, 10.5, -25.25, 22.25, 10.5, -25.5, 31, 10.5, -39.25, 31.25, 10.5, -37.5, 34, 10.5, -37.75, 34, 10.5, -42, 19.5, 4.5, -41.75, 19.5, 4.5, -39.5, 21.75, 4.5, -39.5, 21.75, 4.5, -41.75, 31.5, 4.5, -41.75, 31.5, 4.5, -39.5, 33.75, 4.5, -39.5, 33.75, 4.5, -41.75, 13, 4.5, -25, 18.25, 4.5, -24.75, 18.5, 4.5, -26.5, 18.25, 4.5, -38.5, 21, 4.5, -26.5, 21, 4.5, -38.25, 23, 4.75, -26.25, 23, 4.5, -24.25, 30.25, 4.5, -24.25, 30.5, 4.75, -26.5, 30.25, 4.75, -38.5, 23, 4.75, -38.5, 31.25, 10.5, -27.25, 34, 10.5, -27, 31, 10.5, -25.5, 34, 10.5, -22.75, 19.25, 10.5, -22.75, 19.5, 4.5, -25.25, 19.5, 4.5, -23, 21.75, 4.5, -23, 21.75, 4.5, -25.25, 31.5, 4.5, -25.25, 31.5, 4.5, -23, 33.75, 4.5, -23, 33.75, 4.5, -25.25, 18.25, 4.5, -22, 13, 4.5, -15.5, 15.75, 4.5, -15.5, 16, 4.5, -13.5, 21.5, 4.5, -13.5, 21.25, 4.5, -21.75, 23, 4.5, -22, 30.5, 4.5, -21.75, -46.5, 12, -11.25, -43.25, 12, -11.25, -43.5, 12, -14.5, -46.5, 12, -14.5, 11.75, 12, -14.5, 11.75, 12, -11.25, 15, 12, -11.25, 15, 12, -14.5, 13, 4.5, -14.25, 13, 4.5, -13.5, 14.75, 4.5, -13.5, 14.75, 4.5, -14.25, -83.5, 11.5, -10.5, -80.25, 11.5, -10.25, -80.5, 11.5, -13.5, -83.5, 11.5, -13.5, 49.75, 4.5, -11.75, 48.25, 4, -11.75, 48.5, 4.25, 15.5, 50.75, 4.5, 15.5, 51, 4.5, 16.5, 82.75, 4.5, 16.5, 83, 4.5, 14.5, 85.75, 4.5, 14.5, -33.75, 1, 8, -33.5, 1, 7.5, -34.25, 1, 7.25, -34.5, 1, 8.25, -56.75, 4.5, 12.5, -57.25, 4.5, 12.75, -46.5, 4.5, 17.5, -34.25, 1, 6.25, -35.5, 1, 11.5, -34.5, 1, 10.75, -34.25, 1, 9.75, -55.75, 4.5, 9, -56.75, 4.5, 9.25, -57, 4.5, 11, -46.25, 4.5, 17, -55.75, 4.5, 8, -35.5, 1, 12.75, -34.75, 1, 17, -34.75, 1, 13.5, -42.75, 3.5, -10.25, -47.25, 4.5, -10.25, -35.5577, 1, 3.71154, -46.125, 4.5, -10.25, -47.0141, 4.5, 6.51002, -47.5, 4.5, -11.25, -56.5, 4.5, -11.25, -56.5, 4.5, 7.75, -33.5, 1, -11.75, -42.25, 3.25, -11.75, -33.5, 1, 6, -36.4167, 1.25, -11.75, -23, 1, 9.5, -22.75, 1, 9, -23.5, 1, 8.75, -23.75, 1, 9.75, -27, 1, 8.5, -23.5, 1, 7.75, -22.75, 1, 7.5, -32.75, 1, 6.25, -32.75, 1, 7.25, -28, 1, 8.5, -33, 1, 8.5, -22.75, 1, -11.75, -26.75, 1, 9.5, -23.75, 1, 10.25, -22.25, 1, 9.75, -22, 1, 8.75, -22, 1, 7.75, -12.25, 1, 15.5, -9, 1, 15.5, -8.75, 1, -11.75, -22.25, 1, 10.75, -23.25, 1, 11, -23.5, 1, 12.25, -23.25, 1, 14.75, -12.5, 1, 17, -24, 1, 15, -24, 1, 17, -7.5, 1, 15.5, -7.25, 1, 17, 12.25, 1, 17, 11, 1, -10.25, 10.75, 1, -11.75, 12.5, 1, -10.25, 46, 3.5, 15.5, 47.5, 3.75, 15.5, 47.25, 3.75, -11.75, 15.75, 1, -10.25, 14.25, 1, -10.25, 14.5, 1, 17, 45.75, 3.25, 17, 16, 1, -11.75, 38.3095, 1, 17, 38.3214, 1, -11.75, 38.5142, 1, 15.4815, -82.25, 4.5, -11.25, -82.25, 4.5, -10.5, -80.5, 4.5, -10.5, -80.5, 4.5, -11.25, -70.25, 4.5, 15, -70, 4.5, 13.5, -70.5, 4.5, 13.25, -71.25, 4.5, 15, -65, 4.5, 12.25, -64.75, 4.5, 10.75, -65.25, 4.5, 10.5, -66, 4.5, 12.25, -82.25, 4.5, 16, -70.25, 4.5, 11.75, -65.25, 4.5, 9.25, -79.75, 4.5, -9.25, -82.25, 4.5, -9.25, -71.5, 4.5, 16, -69, 4.5, 12.75, -66.25, 4.5, 13, -69.25, 4.5, 11.75, -64.5, 4.5, -11.25, -79.25, 4.5, -11.25, -79.25, 4.5, -9.75, -64.5, 4.5, 9, -57.25, 4.5, 9, -58, 4.5, 11, -63.75, 4.5, 9.25, -57.25, 4.5, 8, -58.25, 4.5, 11.5, -64, 4.5, 10.75, -27.75, 1, 10.5, -27.5, 1, 10, -28.25, 1, 9.75, -28.5, 1, 10.75, -33.25, 1, 9.75, -33.75, 1, 12.75, -29.5, 1, 13.5, -29, 1, 17, -29, 1, 16, -29.5, 1, 15.75, -33.75, 1, 11.5, -28.75, 1, 13.25, -28.25, 1, 12.25, -27, 1, 10.75, -27, 1, 11.5, -27.5, 1, 12.25, -28, 1, 14, -28, 1, 15.25, -24.75, 1, 14.75, -24.75, 1, 12.5, -69.25, 4.5, 13.5, -65, 4.5, 14, -58.25, 4.5, 12.5, -66, 4.5, 14, -70.25, 4.5, 16.75, -30, 4.5, 65.5, -29.75, 4.5, 48.25, -31.5, 4.5, 48, -31.5, 4.5, 43.75, -46.25, 4.5, 18.75, -79.5, 4.5, 63.5, -79.25, 4.5, 65.5, -31.5, 4.5, 31.5, -31.5, 4.5, 27.25, -71.25, 4.5, 16.75, -29.75, 4.5, 27, -30, 4.5, 18.75, -29.25, 4.5, 43.5, -29.25, 4.5, 31.75, -82.25, 4.5, 63.5, 83.75, 11.5, 15.5, 83.75, 11.5, 18.75, 87, 11.5, 18.75, 87, 11.5, 15.5, 84, 4.5, 15.75, 84, 4.5, 16.5, 85.75, 4.5, 16.5, 85.75, 4.5, 15.75, -10, 12, 17.75, -9.75, 12, 16.75, -10, 12, 16.5, -11.5, 12, 16.5, -8.5, 12, 18, -8.75, 12, 17.75, -8.75, 12, 19.75, -11.5, 12, 19.75, -9, 12, 16.75, -8.25, 12, 16.5, 46.75, 12, 16.5, 46.75, 12, 19.75, 50, 12, 19.75, 50, 12, 16.5, -26.75, 4.5, 29.25, -19.5, 4.5, 29.5, -19.5, 4.5, 27.25, -27, 4.5, 27, -17.75, 4.5, 27, -18, 4.5, 18.75, -12.25, 4.5, 20.75, -12.5, 4.5, 18.75, -15, 4.5, 27, -14.75, 4.5, 29.75, -9.5, 4.5, 30, -9.5, 4.5, 20.75, -11.25, 4.5, 18.75, -11.25, 4.5, 19.5, -9.5, 4.5, 19.5, -9.5, 4.5, 18.75, -30.5, 10.5, 32.75, -28, 10.5, 32.75, -27.75, 10.5, 30.5, -30.5, 10.5, 28, -20.75, 10.5, 30.5, -20.75, 10.5, 28, -18.5, 10.5, 30.75, -15.75, 10.5, 28, -18.5, 10.5, 42.25, -16, 10.5, 42.25, -30.25, 4.5, 28.25, -30.25, 4.5, 30.5, -28, 4.5, 30.5, -28, 4.5, 28.25, -18.25, 4.5, 28.25, -18.25, 4.5, 30.5, -16, 4.5, 30.5, -16, 4.5, 28.25, -26.75, 4.75, 31.25, -19.5, 4.75, 31.5, -27, 4.75, 43.5, -19.5, 4.75, 43.75, -17.5, 4.5, 43.5, -17.5, 4.5, 31.75, -27.25, 4.75, 31.75, -26.75, 4.5, 45.75, -19.5, 4.5, 46, -14.75, 4.5, 31.25, -15.25, 4.5, 31.75, -15, 4.5, 43.5, -14.75, 4.5, 46.25, -9.5, 4.5, 46.5, -25.75, 10.5, 47, -25.75, 10.5, 44.5, -28, 10.5, 44.25, -30.5, 10.5, 47.25, -18.75, 10.5, 44.5, -15.75, 10.5, 47.25, -30.25, 4.5, 44.75, -30.25, 4.5, 47, -28, 4.5, 47, -28, 4.5, 44.75, -18.25, 4.5, 44.75, -18.25, 4.5, 47, -16, 4.5, 47, -16, 4.5, 44.75, -14.75, 4.5, 47.75, -15.25, 4.5, 48.25, -12.25, 4.5, 63.5, -9.5, 4.5, 63.5, -26.75, 4.5, 47.75, -19.25, 4.5, 48.25, -27.25, 4.5, 48.25, -12.5, 4.5, 65.5, -80.5, 12.5, 67.5, -80.25, 12.5, 66.25, -80.25, 12.5, 64.5, -83.5, 12.5, 64.5, -83.5, 12.5, 67.5, -11.5, 13.5, 64.5, -11.5, 13.5, 67.5, -8.5, 13.5, 67.5, -8.5, 13.5, 64.5, -82.25, 4.5, 64.75, -82.25, 4.5, 65.5, -80.5, 4.5, 65.5, -80.5, 4.5, 64.75, -11.25, 4.5, 64.75, -11.25, 4.5, 65.5, -9.5, 4.5, 65.5, -9.5, 4.5, 64.75)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(20, 14, 15), PackedInt32Array(19, 20, 21), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 15), PackedInt32Array(22, 15, 23), PackedInt32Array(21, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 29), PackedInt32Array(36, 29, 37), PackedInt32Array(36, 37, 25), PackedInt32Array(35, 38, 34), PackedInt32Array(37, 24, 25), PackedInt32Array(29, 26, 33), PackedInt32Array(29, 33, 30), PackedInt32Array(29, 30, 37), PackedInt32Array(34, 39, 29), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(49, 48, 44), PackedInt32Array(44, 48, 47), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(45, 46, 50), PackedInt32Array(50, 46, 53), PackedInt32Array(57, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 65), PackedInt32Array(65, 62, 12), PackedInt32Array(12, 13, 65), PackedInt32Array(66, 64, 67), PackedInt32Array(67, 64, 65), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(68, 66, 71), PackedInt32Array(71, 66, 67), PackedInt32Array(71, 67, 72), PackedInt32Array(71, 72, 31), PackedInt32Array(73, 17, 72), PackedInt32Array(72, 17, 18), PackedInt32Array(31, 32, 71), PackedInt32Array(67, 73, 72), PackedInt32Array(51, 52, 74), PackedInt32Array(74, 52, 75), PackedInt32Array(74, 75, 76), PackedInt32Array(76, 75, 77), PackedInt32Array(48, 49, 78), PackedInt32Array(78, 49, 76), PackedInt32Array(78, 76, 77), PackedInt32Array(82, 81, 79), PackedInt32Array(79, 81, 80), PackedInt32Array(86, 85, 83), PackedInt32Array(83, 85, 84), PackedInt32Array(63, 87, 62), PackedInt32Array(62, 87, 89), PackedInt32Array(62, 89, 88), PackedInt32Array(90, 89, 91), PackedInt32Array(91, 89, 87), PackedInt32Array(91, 87, 92), PackedInt32Array(69, 70, 93), PackedInt32Array(93, 70, 94), PackedInt32Array(94, 27, 28), PackedInt32Array(93, 94, 92), PackedInt32Array(92, 94, 91), PackedInt32Array(91, 94, 28), PackedInt32Array(98, 97, 95), PackedInt32Array(95, 97, 96), PackedInt32Array(102, 101, 99), PackedInt32Array(99, 101, 100), PackedInt32Array(106, 105, 103), PackedInt32Array(103, 105, 104), PackedInt32Array(110, 109, 107), PackedInt32Array(107, 109, 108), PackedInt32Array(112, 111, 113), PackedInt32Array(113, 111, 114), PackedInt32Array(114, 39, 115), PackedInt32Array(115, 39, 116), PackedInt32Array(116, 39, 117), PackedInt32Array(117, 39, 34), PackedInt32Array(34, 118, 117), PackedInt32Array(114, 111, 39), PackedInt32Array(120, 119, 121), PackedInt32Array(121, 119, 122), PackedInt32Array(125, 124, 123), PackedInt32Array(121, 122, 126), PackedInt32Array(126, 122, 127), PackedInt32Array(128, 127, 129), PackedInt32Array(129, 127, 122), PackedInt32Array(131, 130, 132), PackedInt32Array(132, 130, 123), PackedInt32Array(123, 130, 133), PackedInt32Array(123, 133, 125), PackedInt32Array(133, 130, 134), PackedInt32Array(127, 135, 133), PackedInt32Array(137, 136, 135), PackedInt32Array(135, 136, 133), PackedInt32Array(139, 142, 134), PackedInt32Array(134, 142, 133), PackedInt32Array(133, 142, 127), PackedInt32Array(127, 140, 126), PackedInt32Array(140, 142, 138), PackedInt32Array(138, 142, 141), PackedInt32Array(141, 142, 139), PackedInt32Array(142, 140, 127), PackedInt32Array(143, 139, 144), PackedInt32Array(144, 139, 145), PackedInt32Array(145, 139, 134), PackedInt32Array(126, 140, 148), PackedInt32Array(148, 140, 146), PackedInt32Array(146, 140, 149), PackedInt32Array(149, 140, 138), PackedInt32Array(149, 138, 147), PackedInt32Array(151, 150, 152), PackedInt32Array(152, 150, 153), PackedInt32Array(155, 154, 156), PackedInt32Array(156, 154, 159), PackedInt32Array(156, 159, 158), PackedInt32Array(156, 158, 157), PackedInt32Array(119, 120, 160), PackedInt32Array(160, 120, 158), PackedInt32Array(160, 158, 159), PackedInt32Array(157, 148, 156), PackedInt32Array(156, 148, 146), PackedInt32Array(156, 146, 161), PackedInt32Array(152, 153, 155), PackedInt32Array(155, 153, 162), PackedInt32Array(155, 162, 154), PackedInt32Array(153, 163, 162), PackedInt32Array(150, 151, 164), PackedInt32Array(164, 151, 165), PackedInt32Array(167, 166, 168), PackedInt32Array(168, 166, 161), PackedInt32Array(168, 161, 169), PackedInt32Array(171, 170, 172), PackedInt32Array(172, 170, 173), PackedInt32Array(173, 170, 167), PackedInt32Array(173, 167, 174), PackedInt32Array(164, 165, 170), PackedInt32Array(170, 165, 167), PackedInt32Array(175, 173, 176), PackedInt32Array(176, 173, 174), PackedInt32Array(166, 156, 161), PackedInt32Array(167, 165, 166), PackedInt32Array(181, 180, 169), PackedInt32Array(169, 180, 177), PackedInt32Array(177, 180, 178), PackedInt32Array(178, 180, 179), PackedInt32Array(177, 168, 169), PackedInt32Array(180, 182, 179), PackedInt32Array(185, 184, 183), PackedInt32Array(188, 187, 186), PackedInt32Array(190, 192, 186), PackedInt32Array(186, 193, 188), PackedInt32Array(188, 193, 191), PackedInt32Array(191, 193, 189), PackedInt32Array(189, 193, 183), PackedInt32Array(183, 192, 185), PackedInt32Array(192, 193, 186), PackedInt32Array(193, 192, 183), PackedInt32Array(185, 112, 184), PackedInt32Array(184, 112, 113), PackedInt32Array(197, 196, 194), PackedInt32Array(194, 196, 195), PackedInt32Array(199, 198, 200), PackedInt32Array(200, 198, 201), PackedInt32Array(203, 202, 204), PackedInt32Array(204, 202, 205), PackedInt32Array(207, 206, 208), PackedInt32Array(208, 206, 209), PackedInt32Array(209, 206, 210), PackedInt32Array(201, 211, 206), PackedInt32Array(205, 213, 212), PackedInt32Array(204, 205, 208), PackedInt32Array(208, 205, 214), PackedInt32Array(214, 205, 212), PackedInt32Array(217, 216, 215), PackedInt32Array(200, 201, 207), PackedInt32Array(207, 201, 206), PackedInt32Array(217, 215, 209), PackedInt32Array(209, 215, 208), PackedInt32Array(208, 215, 218), PackedInt32Array(208, 214, 207), PackedInt32Array(131, 132, 219), PackedInt32Array(219, 132, 220), PackedInt32Array(221, 218, 222), PackedInt32Array(222, 218, 145), PackedInt32Array(145, 218, 144), PackedInt32Array(144, 218, 215), PackedInt32Array(220, 223, 219), PackedInt32Array(219, 223, 222), PackedInt32Array(222, 223, 221), PackedInt32Array(221, 223, 224), PackedInt32Array(182, 187, 179), PackedInt32Array(179, 187, 188), PackedInt32Array(226, 225, 227), PackedInt32Array(227, 225, 228), PackedInt32Array(229, 160, 230), PackedInt32Array(230, 160, 231), PackedInt32Array(231, 160, 228), PackedInt32Array(228, 160, 159), PackedInt32Array(232, 234, 233), PackedInt32Array(129, 229, 128), PackedInt32Array(128, 229, 235), PackedInt32Array(236, 231, 237), PackedInt32Array(237, 231, 228), PackedInt32Array(137, 230, 136), PackedInt32Array(136, 230, 234), PackedInt32Array(136, 234, 232), PackedInt32Array(159, 227, 228), PackedInt32Array(231, 234, 230), PackedInt32Array(230, 235, 229), PackedInt32Array(225, 226, 238), PackedInt32Array(238, 226, 162), PackedInt32Array(239, 238, 162), PackedInt32Array(237, 240, 236), PackedInt32Array(236, 240, 241), PackedInt32Array(240, 239, 241), PackedInt32Array(241, 239, 242), PackedInt32Array(242, 239, 244), PackedInt32Array(242, 244, 243), PackedInt32Array(233, 242, 232), PackedInt32Array(232, 242, 243), PackedInt32Array(232, 243, 175), PackedInt32Array(232, 175, 176), PackedInt32Array(171, 172, 163), PackedInt32Array(163, 172, 244), PackedInt32Array(163, 244, 239), PackedInt32Array(163, 239, 162), PackedInt32Array(198, 199, 245), PackedInt32Array(203, 224, 202), PackedInt32Array(202, 224, 246), PackedInt32Array(246, 224, 247), PackedInt32Array(247, 224, 223), PackedInt32Array(245, 212, 213), PackedInt32Array(198, 245, 249), PackedInt32Array(249, 245, 248), PackedInt32Array(248, 245, 213), PackedInt32Array(252, 251, 250), PackedInt32Array(254, 253, 252), PackedInt32Array(255, 206, 256), PackedInt32Array(256, 206, 254), PackedInt32Array(256, 254, 252), PackedInt32Array(256, 252, 250), PackedInt32Array(249, 248, 246), PackedInt32Array(254, 258, 257), PackedInt32Array(259, 249, 254), PackedInt32Array(247, 124, 246), PackedInt32Array(246, 124, 249), PackedInt32Array(249, 124, 125), PackedInt32Array(249, 125, 254), PackedInt32Array(260, 258, 261), PackedInt32Array(261, 258, 254), PackedInt32Array(206, 211, 259), PackedInt32Array(262, 253, 263), PackedInt32Array(263, 253, 257), PackedInt32Array(254, 206, 259), PackedInt32Array(254, 257, 253), PackedInt32Array(255, 264, 206), PackedInt32Array(268, 267, 265), PackedInt32Array(265, 267, 266), PackedInt32Array(272, 271, 269), PackedInt32Array(269, 271, 270), PackedInt32Array(274, 273, 275), PackedInt32Array(275, 273, 276), PackedInt32Array(278, 277, 273), PackedInt32Array(273, 277, 279), PackedInt32Array(279, 280, 273), PackedInt32Array(273, 280, 276), PackedInt32Array(274, 275, 281), PackedInt32Array(281, 275, 282), PackedInt32Array(278, 281, 277), PackedInt32Array(277, 281, 282), PackedInt32Array(286, 285, 283), PackedInt32Array(283, 285, 284), PackedInt32Array(288, 287, 289), PackedInt32Array(289, 287, 290), PackedInt32Array(290, 260, 261), PackedInt32Array(289, 290, 291), PackedInt32Array(291, 290, 292), PackedInt32Array(292, 290, 261), PackedInt32Array(294, 293, 292), PackedInt32Array(292, 293, 295), PackedInt32Array(292, 295, 291), PackedInt32Array(296, 295, 297), PackedInt32Array(297, 295, 293), PackedInt32Array(297, 293, 298), PackedInt32Array(302, 301, 299), PackedInt32Array(299, 301, 300), PackedInt32Array(304, 303, 305), PackedInt32Array(305, 303, 306), PackedInt32Array(307, 305, 308), PackedInt32Array(308, 305, 306), PackedInt32Array(307, 308, 309), PackedInt32Array(309, 308, 310), PackedInt32Array(311, 309, 312), PackedInt32Array(312, 309, 310), PackedInt32Array(316, 315, 313), PackedInt32Array(313, 315, 314), PackedInt32Array(320, 319, 317), PackedInt32Array(317, 319, 318), PackedInt32Array(322, 321, 288), PackedInt32Array(288, 321, 287), PackedInt32Array(324, 323, 325), PackedInt32Array(325, 323, 326), PackedInt32Array(326, 323, 322), PackedInt32Array(322, 323, 327), PackedInt32Array(329, 328, 324), PackedInt32Array(324, 328, 323), PackedInt32Array(263, 327, 262), PackedInt32Array(262, 327, 323), PackedInt32Array(327, 321, 322), PackedInt32Array(330, 296, 297), PackedInt32Array(330, 297, 331), PackedInt32Array(331, 297, 332), PackedInt32Array(332, 297, 333), PackedInt32Array(333, 297, 334), PackedInt32Array(326, 331, 325), PackedInt32Array(325, 331, 332), PackedInt32Array(336, 335, 337), PackedInt32Array(337, 335, 338), PackedInt32Array(304, 337, 303), PackedInt32Array(303, 337, 338), PackedInt32Array(311, 312, 339), PackedInt32Array(339, 312, 340), PackedInt32Array(336, 339, 335), PackedInt32Array(335, 339, 340), PackedInt32Array(344, 343, 341), PackedInt32Array(341, 343, 342), PackedInt32Array(348, 347, 345), PackedInt32Array(345, 347, 346), PackedInt32Array(349, 333, 334), PackedInt32Array(349, 334, 350), PackedInt32Array(350, 334, 351), PackedInt32Array(351, 334, 352), PackedInt32Array(328, 329, 353), PackedInt32Array(353, 329, 354), PackedInt32Array(354, 350, 351), PackedInt32Array(353, 354, 355), PackedInt32Array(355, 354, 250), PackedInt32Array(250, 354, 351), PackedInt32Array(250, 351, 356), PackedInt32Array(250, 251, 355), PackedInt32Array(358, 357, 359), PackedInt32Array(359, 357, 361), PackedInt32Array(359, 361, 360), PackedInt32Array(365, 364, 362), PackedInt32Array(362, 364, 363), PackedInt32Array(369, 368, 366), PackedInt32Array(366, 368, 367), PackedInt32Array(373, 372, 370), PackedInt32Array(370, 372, 371)]
+vertices = PackedVector3Array(-46.5, 12, -11.25, -43.25, 12, -11.25, -43.5, 12, -14.5, -46.5, 12, -14.5, -83.5, 11.5, -10.5, -80.25, 11.5, -10.25, -80.5, 11.5, -13.5, -83.5, 11.5, -13.5, -7.5, 1, 15.5, -7.25, 1, 17, 1.5, 1, 17, 1.5, 1, -11.75, -42.75, 3.5, -10.25, -44.75, 4, -10.25, -44.5, 4, 17, -12.5, 1, 17, -12.25, 1, 15.5, -35.7045, 1, 16.5909, -37.2273, 1.5, 17, -34.3182, 1, 17, -42.25, 3.25, -11.75, -34.9583, 1, -11.75, -82.25, 4.5, -11.25, -82.25, 4.5, -10.5, -80.5, 4.5, -10.5, -80.5, 4.5, -11.25, -46.25, 4.5, 17, -47.25, 4.5, -10.25, -47.5, 4.5, -11.25, -79.25, 4.5, -11.25, -79.25, 4.5, -9.75, -79.75, 4.5, -9.25, -82.25, 4.5, -9.25, -82.25, 4.5, 18, -46.5, 4.5, 18, -10, 12, 17.75, -9.75, 12, 16.75, -10, 12, 16.5, -11.5, 12, 16.5, -8.5, 12, 18, -8.75, 12, 17.75, -8.75, 12, 19.75, -11.5, 12, 19.75, -9, 12, 16.75, -8.25, 12, 16.5, -31.5, 4.5, 27.25, -29.75, 4.5, 27, -30, 4.5, 18.75, -46.25, 4.5, 18.75, -31.5, 4.5, 43.75, -29.25, 4.5, 43.5, -29.25, 4.5, 31.75, -31.5, 4.5, 31.5, -79.5, 4.5, 63.5, -79.25, 4.5, 65.5, -30, 4.5, 65.5, -31.5, 4.5, 48, -82.25, 4.5, 63.5, -29.75, 4.5, 48.25, -26.75, 4.5, 29.25, -19.5, 4.5, 29.5, -19.5, 4.5, 27.25, -27, 4.5, 27, -17.75, 4.5, 27, -18, 4.5, 18.75, -12.25, 4.5, 20.75, -12.5, 4.5, 18.75, -15, 4.5, 27, -14.75, 4.5, 29.75, -9.5, 4.5, 30, -9.5, 4.5, 20.75, -11.25, 4.5, 18.75, -11.25, 4.5, 19.5, -9.5, 4.5, 19.5, -9.5, 4.5, 18.75, -30.5, 10.5, 32.75, -28, 10.5, 32.75, -27.75, 10.5, 30.5, -30.5, 10.5, 28, -20.75, 10.5, 30.5, -20.75, 10.5, 28, -18.5, 10.5, 30.75, -15.75, 10.5, 28, -18.5, 10.5, 42.25, -16, 10.5, 42.25, -30.25, 4.5, 28.25, -30.25, 4.5, 30.5, -28, 4.5, 30.5, -28, 4.5, 28.25, -18.25, 4.5, 28.25, -18.25, 4.5, 30.5, -16, 4.5, 30.5, -16, 4.5, 28.25, -26.75, 4.75, 31.25, -19.5, 4.75, 31.5, -27, 4.75, 43.5, -19.5, 4.75, 43.75, -17.5, 4.5, 43.5, -17.5, 4.5, 31.75, -27.25, 4.75, 31.75, -26.75, 4.5, 45.75, -19.5, 4.5, 46, -14.75, 4.5, 31.25, -15.25, 4.5, 31.75, -15, 4.5, 43.5, -14.75, 4.5, 46.25, -9.5, 4.5, 46.5, -25.75, 10.5, 47, -25.75, 10.5, 44.5, -28, 10.5, 44.25, -30.5, 10.5, 47.25, -18.75, 10.5, 44.5, -15.75, 10.5, 47.25, -30.25, 4.5, 44.75, -30.25, 4.5, 47, -28, 4.5, 47, -28, 4.5, 44.75, -18.25, 4.5, 44.75, -18.25, 4.5, 47, -16, 4.5, 47, -16, 4.5, 44.75, -14.75, 4.5, 47.75, -15.25, 4.5, 48.25, -12.25, 4.5, 63.5, -9.5, 4.5, 63.5, -26.75, 4.5, 47.75, -19.25, 4.5, 48.25, -27.25, 4.5, 48.25, -12.5, 4.5, 65.5, -80.5, 12.5, 67.5, -80.25, 12.5, 66.25, -80.25, 12.5, 64.5, -83.5, 12.5, 64.5, -83.5, 12.5, 67.5, -11.5, 13.5, 64.5, -11.5, 13.5, 67.5, -8.5, 13.5, 67.5, -8.5, 13.5, 64.5, -82.25, 4.5, 64.75, -82.25, 4.5, 65.5, -80.5, 4.5, 65.5, -80.5, 4.5, 64.75, -11.25, 4.5, 64.75, -11.25, 4.5, 65.5, -9.5, 4.5, 65.5, -9.5, 4.5, 64.75)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(14, 17, 18), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(20, 21, 12), PackedInt32Array(12, 21, 14), PackedInt32Array(14, 21, 17), PackedInt32Array(17, 21, 16), PackedInt32Array(16, 21, 11), PackedInt32Array(8, 16, 11), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(14, 26, 13), PackedInt32Array(13, 26, 27), PackedInt32Array(30, 29, 28), PackedInt32Array(33, 32, 31), PackedInt32Array(33, 31, 30), PackedInt32Array(26, 34, 27), PackedInt32Array(27, 34, 28), PackedInt32Array(28, 34, 30), PackedInt32Array(30, 34, 33), PackedInt32Array(36, 35, 37), PackedInt32Array(37, 35, 38), PackedInt32Array(40, 39, 35), PackedInt32Array(35, 39, 41), PackedInt32Array(41, 42, 35), PackedInt32Array(35, 42, 38), PackedInt32Array(36, 37, 43), PackedInt32Array(43, 37, 44), PackedInt32Array(40, 43, 39), PackedInt32Array(39, 43, 44), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 52), PackedInt32Array(53, 33, 54), PackedInt32Array(54, 33, 48), PackedInt32Array(54, 48, 56), PackedInt32Array(54, 56, 55), PackedInt32Array(53, 57, 33), PackedInt32Array(56, 58, 55), PackedInt32Array(48, 45, 52), PackedInt32Array(48, 52, 49), PackedInt32Array(48, 49, 56), PackedInt32Array(33, 34, 48), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(62, 46, 47), PackedInt32Array(61, 62, 63), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 47), PackedInt32Array(66, 65, 64), PackedInt32Array(64, 65, 67), PackedInt32Array(64, 67, 63), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 65), PackedInt32Array(69, 65, 70), PackedInt32Array(74, 73, 71), PackedInt32Array(71, 73, 72), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 78), PackedInt32Array(79, 77, 80), PackedInt32Array(80, 77, 78), PackedInt32Array(79, 80, 81), PackedInt32Array(81, 80, 82), PackedInt32Array(83, 81, 84), PackedInt32Array(84, 81, 82), PackedInt32Array(88, 87, 85), PackedInt32Array(85, 87, 86), PackedInt32Array(92, 91, 89), PackedInt32Array(89, 91, 90), PackedInt32Array(94, 93, 60), PackedInt32Array(60, 93, 59), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(98, 95, 94), PackedInt32Array(94, 95, 99), PackedInt32Array(101, 100, 96), PackedInt32Array(96, 100, 95), PackedInt32Array(51, 99, 50), PackedInt32Array(50, 99, 95), PackedInt32Array(99, 93, 94), PackedInt32Array(102, 68, 69), PackedInt32Array(102, 69, 103), PackedInt32Array(103, 69, 104), PackedInt32Array(104, 69, 105), PackedInt32Array(105, 69, 106), PackedInt32Array(98, 103, 97), PackedInt32Array(97, 103, 104), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 107, 110), PackedInt32Array(76, 109, 75), PackedInt32Array(75, 109, 110), PackedInt32Array(83, 84, 111), PackedInt32Array(111, 84, 112), PackedInt32Array(108, 111, 107), PackedInt32Array(107, 111, 112), PackedInt32Array(116, 115, 113), PackedInt32Array(113, 115, 114), PackedInt32Array(120, 119, 117), PackedInt32Array(117, 119, 118), PackedInt32Array(121, 105, 106), PackedInt32Array(121, 106, 122), PackedInt32Array(122, 106, 123), PackedInt32Array(123, 106, 124), PackedInt32Array(100, 101, 125), PackedInt32Array(125, 101, 126), PackedInt32Array(126, 122, 123), PackedInt32Array(125, 126, 127), PackedInt32Array(127, 126, 55), PackedInt32Array(55, 126, 123), PackedInt32Array(55, 123, 128), PackedInt32Array(55, 58, 127), PackedInt32Array(130, 129, 131), PackedInt32Array(131, 129, 133), PackedInt32Array(131, 133, 132), PackedInt32Array(137, 136, 134), PackedInt32Array(134, 136, 135), PackedInt32Array(141, 140, 138), PackedInt32Array(138, 140, 139), PackedInt32Array(145, 144, 142), PackedInt32Array(142, 144, 143)]
 agent_radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eiq3u"]
@@ -398,23 +381,33 @@ points = PackedVector3Array(-47, 11.5, -15, -47, 0, -15, -43, 0, -15, -43, 11.5,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c4x2v"]
 points = PackedVector3Array(-96, 10, -12.5, -99.5, -0.5, -12.5, -46.5, -0.5, -12.5, -43, 10, -12.5, -96, 10, -12, -99.5, -0.5, -12, -46.5, -0.5, -12, -43, 10, -12)
 
+[sub_resource type="LabelSettings" id="LabelSettings_udxuc"]
+font_size = 50
+font_color = Color(1, 0.368627, 0.392157, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ikiii"]
+font_size = 50
+font_color = Color(1, 0.901961, 0.466667, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_b4b3y")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vs3w8")
 
-[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2.27167, 0)
-collision_layer = 32769
-collision_mask = 32769
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.27167, 0)
 script = ExtResource("7_24w7t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 visible = false
 mesh = SubResource("CapsuleMesh_0v5n0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" groups=["player"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("ConvexPolygonShape3D_gdn3q")
 
 [node name="Head" type="Node3D" parent="Player"]
@@ -422,7 +415,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.642268, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0536e-08, 5.95464e-08, 5.94882e-08)
-fov = 37.8493
 
 [node name="GunBall" type="MeshInstance3D" parent="Player/Head/Camera3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -471,25 +463,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -99.5)
 [node name="PrismRays" type="Node3D" parent="Player/Head/Camera3D"]
 
 [node name="PRay1" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.997564, 0, -0.0697565, 0, 1, 0, 0.0697565, 0, 0.997564, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999391, 0, -0.0348995, 0, 1, 0, 0.0348995, 0, 0.999391, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay2" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.997564, 0, 0.0697565, 0, 1, 0, -0.0697565, 0, 0.997564, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay3" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.997564, 0, -0.0697565, 0, 1, 0, 0.0697565, 0, 0.997564, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay4" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.990268, 0, 0.139173, 0, 1, 0, -0.139173, 0, 0.990268, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.997564, 0, 0.0697565, 0, 1, 0, -0.0697565, 0, 0.997564, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
@@ -501,61 +497,69 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay6" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.998806, -0.00068205, -0.048845, 0, 0.999903, -0.0139622, 0.0488497, 0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999701, -0.000341126, -0.0244298, 0, 0.999903, -0.0139622, 0.0244322, 0.013958, 0.999604, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay7" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.998806, 0.00068205, 0.048845, 0, 0.999903, -0.0139622, -0.0488497, 0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999701, 0.000341126, 0.0244298, 0, 0.999903, -0.0139622, -0.0244322, 0.013958, 0.999604, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay8" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.995227, -0.00136247, -0.0975734, 0, 0.999903, -0.0139622, 0.0975829, 0.0138956, 0.995131, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.998806, -0.000682049, -0.048845, 0, 0.999903, -0.0139622, 0.0488498, 0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay9" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.995227, 0.00136247, 0.0975734, 0, 0.999903, -0.0139622, -0.0975829, 0.0138956, 0.995131, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.998806, 0.000682049, 0.048845, 0, 0.999903, -0.0139622, -0.0488498, 0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay10" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.999925, -0.000170576, -0.0122158, 0, 0.999903, -0.0139621, 0.012217, 0.0139611, 0.999827, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999925, -0.000170576, -0.0122158, 0, 0.999903, -0.0139622, 0.012217, 0.0139611, 0.999827, 1.70562e-08, 0, -0.3902)
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay11" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.998806, 0.00068205, -0.048845, 0, 0.999903, 0.0139622, 0.0488497, -0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999701, 0.000341127, -0.0244298, 0, 0.999903, 0.0139622, 0.0244322, -0.013958, 0.999604, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay12" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.998806, -0.00068205, 0.048845, 0, 0.999903, 0.0139622, -0.0488497, -0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999701, -0.000341127, 0.0244298, 0, 0.999903, 0.0139622, -0.0244322, -0.013958, 0.999604, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay13" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.995227, 0.00136247, -0.0975734, 0, 0.999903, 0.0139622, 0.0975829, -0.0138956, 0.995131, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.998806, 0.000682049, -0.048845, 0, 0.999903, 0.0139622, 0.0488498, -0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay14" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.995227, -0.00136247, 0.0975734, 0, 0.999903, 0.0139622, -0.0975829, -0.0138956, 0.995131, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.998806, -0.000682049, 0.048845, 0, 0.999903, 0.0139622, -0.0488498, -0.0139455, 0.998709, 1.70562e-08, 0, -0.3902)
+visible = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="PRay15" type="RayCast3D" parent="Player/Head/Camera3D/PrismRays"]
-transform = Transform3D(0.999925, -0.000170576, 0.0122158, 0, 0.999903, 0.0139621, -0.012217, -0.0139611, 0.999827, 1.70562e-08, 0, -0.3902)
+transform = Transform3D(0.999925, -0.000170576, 0.0122158, 0, 0.999903, 0.0139622, -0.012217, -0.0139611, 0.999827, 1.70562e-08, 0, -0.3902)
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
@@ -565,14 +569,143 @@ libraries = {
 &"": SubResource("AnimationLibrary_udxuc")
 }
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/Head"]
-stream = ExtResource("9_cbp6q")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.816027, -0.0838093, -0.571906, 0.522435, -0.316399, 0.791804, -0.247311, -0.944917, -0.214405, 0, 8.505, 0)
 light_energy = 2.275
 shadow_enabled = true
 shadow_blur = 0.0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_gelxn")
+navigation_layers = 3
+
+[node name="FuncGodotMap" type="Node3D" parent="NavigationRegion3D"]
+script = ExtResource("1_y0a7c")
+local_map_file = "res://trenchbroom/maps/test.map"
+map_settings = ExtResource("2_8v8v4")
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="NavigationRegion3D/FuncGodotMap"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+layers = 3
+mesh = SubResource("ArrayMesh_cr4bd")
+
+[node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+layers = 3
+occluder = SubResource("ArrayOccluder3D_7tv27")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_flg01")
+
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_83amk")
+
+[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_iat3m")
+
+[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_2xxbg")
+
+[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_hq4s7")
+
+[node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_5cvsu")
+
+[node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_s70s8")
+
+[node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_0l3r0")
+
+[node name="entity_0_brush_8_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_6j14g")
+
+[node name="entity_0_brush_9_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_wwpc1")
+
+[node name="entity_0_brush_10_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_kpcnh")
+
+[node name="entity_0_brush_11_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_6jphm")
+
+[node name="entity_0_brush_12_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_2kugu")
+
+[node name="entity_0_brush_13_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_s40p4")
+
+[node name="entity_0_brush_14_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_tiqv6")
+
+[node name="entity_0_brush_15_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_oiv4s")
+
+[node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_q72tv")
+
+[node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_gjjtg")
+
+[node name="entity_0_brush_18_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_ti8lu")
+
+[node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_r3qv2")
+
+[node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_hd1vi")
+
+[node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_dfm3m")
+
+[node name="entity_0_brush_22_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_4hg6g")
+
+[node name="entity_0_brush_23_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_vbniu")
+
+[node name="entity_0_brush_24_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_vmukj")
+
+[node name="entity_0_brush_25_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_7w2au")
+
+[node name="entity_0_brush_26_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_w1vih")
+
+[node name="entity_0_brush_27_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_pmk2g")
+
+[node name="entity_0_brush_28_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_ome4h")
+
+[node name="entity_0_brush_29_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_kh1nu")
+
+[node name="entity_0_brush_30_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_4c25i")
+
+[node name="entity_0_brush_31_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_c4x2v")
+
+[node name="TigerRocketeer" parent="NavigationRegion3D" instance=ExtResource("15_udxuc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9917, 12.7851, 29.2001)
+player_path = NodePath("../../Player")
+
+[node name="MetalMan" parent="NavigationRegion3D" instance=ExtResource("9_2u3nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3735, 4.32088, -4.76818)
+player_path = NodePath("../../Player")
+
+[node name="Manequin" parent="NavigationRegion3D" instance=ExtResource("14_tpl1h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.4505, 13.0327, 17.2627)
+player_path = NodePath("../../Player")
+
+[node name="Area3D" parent="NavigationRegion3D" instance=ExtResource("18_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2709, 2.00606, 5.79938)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -647,451 +780,6 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "--"
 label_settings = SubResource("LabelSettings_ikiii")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(10.9611, 0.524833, 0, -6.75835, 0.851205, 0, 0, 0, 3.25806, 39.4715, 6.13711, -24.2557)
-mesh = SubResource("BoxMesh_ikiii")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_cbp6q")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_cbp6q")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.76231, 1.10752, -2.39283e-07, 1.39817e-06, -4.12252e-08, -6.32102, -60.9206, -0.0320388, -1.3815e-07, -15.8301, 0.412636, 3.84909)
-mesh = SubResource("BoxMesh_ikiii")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
-shape = SubResource("BoxShape3D_cbp6q")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
-shape = SubResource("BoxShape3D_cbp6q")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.76231, 1.10752, -2.39283e-07, 1.39817e-06, -4.12252e-08, -6.32102, -60.9206, -0.0320388, -1.3815e-07, 10.9005, -1.12295, 3.84909)
-mesh = SubResource("BoxMesh_ikiii")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
-shape = SubResource("BoxShape3D_cbp6q")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
-shape = SubResource("BoxShape3D_cbp6q")
-
-[node name="Enviroment" type="Node3D" parent="."]
-
-[node name="Weapon_pickup" parent="Enviroment" instance=ExtResource("10_bc84e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5226, 5.19914, -31.7554)
-player_path = NodePath("../../Player")
-
-[node name="Weapon_pickup2" parent="Enviroment" instance=ExtResource("10_bc84e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5226, 5.19914, -29.7554)
-player_path = NodePath("../../Player")
-
-[node name="Weapon_pickup5" parent="Enviroment" instance=ExtResource("10_bc84e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72482, 1.84685, -6.2517)
-player_path = NodePath("../../Player")
-
-[node name="Weapon_pickup3" parent="Enviroment" instance=ExtResource("10_bc84e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5226, 5.19914, -33.7554)
-player_path = NodePath("../../Player")
-
-[node name="Weapon_pickup4" parent="Enviroment" instance=ExtResource("10_bc84e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5226, 5.19914, -35.7554)
-player_path = NodePath("../../Player")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Enviroment"]
-navigation_mesh = SubResource("NavigationMesh_gelxn")
-navigation_layers = 3
-
-[node name="FuncGodotMap" type="Node3D" parent="Enviroment/NavigationRegion3D"]
-script = ExtResource("1_y0a7c")
-local_map_file = "res://trenchbroom/maps/test.map"
-map_settings = ExtResource("2_8v8v4")
-
-[node name="entity_0_worldspawn" type="StaticBody3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-layers = 3
-mesh = SubResource("ArrayMesh_cr4bd")
-
-[node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-layers = 3
-occluder = SubResource("ArrayOccluder3D_7tv27")
-
-[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_flg01")
-
-[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_83amk")
-
-[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_iat3m")
-
-[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_2xxbg")
-
-[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_hq4s7")
-
-[node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_5cvsu")
-
-[node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_s70s8")
-
-[node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_0l3r0")
-
-[node name="entity_0_brush_8_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_6j14g")
-
-[node name="entity_0_brush_9_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_wwpc1")
-
-[node name="entity_0_brush_10_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_kpcnh")
-
-[node name="entity_0_brush_11_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_6jphm")
-
-[node name="entity_0_brush_12_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_2kugu")
-
-[node name="entity_0_brush_13_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_s40p4")
-
-[node name="entity_0_brush_14_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_tiqv6")
-
-[node name="entity_0_brush_15_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_oiv4s")
-
-[node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_q72tv")
-
-[node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_gjjtg")
-
-[node name="entity_0_brush_18_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_ti8lu")
-
-[node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_r3qv2")
-
-[node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_hd1vi")
-
-[node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_dfm3m")
-
-[node name="entity_0_brush_22_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_4hg6g")
-
-[node name="entity_0_brush_23_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_vbniu")
-
-[node name="entity_0_brush_24_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_vmukj")
-
-[node name="entity_0_brush_25_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_7w2au")
-
-[node name="entity_0_brush_26_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_w1vih")
-
-[node name="entity_0_brush_27_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_pmk2g")
-
-[node name="entity_0_brush_28_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_ome4h")
-
-[node name="entity_0_brush_29_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_kh1nu")
-
-[node name="entity_0_brush_30_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_4c25i")
-
-[node name="entity_0_brush_31_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_c4x2v")
-
-[node name="FuncGodotMap2" type="Node3D" parent="Enviroment/NavigationRegion3D"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.37296, 0, 5)
-script = ExtResource("1_y0a7c")
-local_map_file = "res://trenchbroom/maps/test.map"
-map_settings = ExtResource("2_8v8v4")
-
-[node name="entity_0_worldspawn" type="StaticBody3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-layers = 3
-mesh = SubResource("ArrayMesh_cr4bd")
-
-[node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-layers = 3
-occluder = SubResource("ArrayOccluder3D_7tv27")
-
-[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_flg01")
-
-[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_83amk")
-
-[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_iat3m")
-
-[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_2xxbg")
-
-[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_hq4s7")
-
-[node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_5cvsu")
-
-[node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_s70s8")
-
-[node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_0l3r0")
-
-[node name="entity_0_brush_8_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_6j14g")
-
-[node name="entity_0_brush_9_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_wwpc1")
-
-[node name="entity_0_brush_10_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_kpcnh")
-
-[node name="entity_0_brush_11_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_6jphm")
-
-[node name="entity_0_brush_12_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_2kugu")
-
-[node name="entity_0_brush_13_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_s40p4")
-
-[node name="entity_0_brush_14_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_tiqv6")
-
-[node name="entity_0_brush_15_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_oiv4s")
-
-[node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_q72tv")
-
-[node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_gjjtg")
-
-[node name="entity_0_brush_18_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_ti8lu")
-
-[node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_r3qv2")
-
-[node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_hd1vi")
-
-[node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_dfm3m")
-
-[node name="entity_0_brush_22_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_4hg6g")
-
-[node name="entity_0_brush_23_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_vbniu")
-
-[node name="entity_0_brush_24_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_vmukj")
-
-[node name="entity_0_brush_25_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_7w2au")
-
-[node name="entity_0_brush_26_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_w1vih")
-
-[node name="entity_0_brush_27_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_pmk2g")
-
-[node name="entity_0_brush_28_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_ome4h")
-
-[node name="entity_0_brush_29_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_kh1nu")
-
-[node name="entity_0_brush_30_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_4c25i")
-
-[node name="entity_0_brush_31_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_c4x2v")
-
-[node name="TigerRocketeer" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27.9624, 2.58662, -6.30003)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer2" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.8338, 2.58662, 0.238992)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer3" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.8338, 2.58662, 2.23899)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer4" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.8338, 2.58662, 2.23899)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer5" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.8338, 2.58662, 0.238992)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer7" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.8005, 2.58662, 6.93065)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer8" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.8005, 2.58662, 8.93065)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer9" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.8005, 2.58662, 8.93065)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer10" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.8005, 2.58662, 6.93065)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer12" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, 2.10358)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer13" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, 4.10358)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer14" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.2305, 8.43477, 4.10358)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer15" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.2305, 8.43477, 2.10358)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer16" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, 2.10358)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer17" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, 4.10358)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer18" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.2305, 8.43477, 2.10358)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer19" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, -5.89642)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer20" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, -3.89642)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer21" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.2305, 8.43477, -3.89642)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer22" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.2305, 8.43477, -5.89642)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer23" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, -5.89642)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer24" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.2305, 8.43477, -3.89642)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer25" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 56.2305, 8.43477, -5.89642)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer26" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 69.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer27" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 69.2305, 8.43477, -23.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer28" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.2305, 8.43477, -23.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer29" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer30" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 69.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer31" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 69.2305, 8.43477, -23.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer32" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer33" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer34" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.2305, 8.43477, -23.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer35" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58.2305, 8.43477, -23.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer36" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer37" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer38" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.2305, 8.43477, -23.8964)
-player_path = NodePath("../../../Player")
-
-[node name="TigerRocketeer39" parent="Enviroment/NavigationRegion3D" instance=ExtResource("15_udxuc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58.2305, 8.43477, -25.8964)
-player_path = NodePath("../../../Player")
-
-[node name="MetalMan" parent="Enviroment/NavigationRegion3D" instance=ExtResource("9_2u3nc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.3735, 4.32088, -4.76818)
-player_path = NodePath("../../../Player")
-
-[node name="Manequin" parent="Enviroment/NavigationRegion3D" instance=ExtResource("14_tpl1h")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.4505, 13.0327, 17.2627)
-player_path = NodePath("../../../Player")
 
 [connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
 [connection signal="show_ammo" from="Player" to="." method="_on_player_show_ammo"]

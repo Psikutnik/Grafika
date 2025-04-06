@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chcxaok64htpj"]
+[gd_scene load_steps=10 format=3 uid="uid://chcxaok64htpj"]
 
 [ext_resource type="AudioStream" uid="uid://cvliuwh5iin1k" path="res://Sounds/080902_shotgun-39753.mp3" id="1_vbeoa"]
 
@@ -114,10 +114,26 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_vbeoa"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.92),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.09461)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ox4q3"]
 _data = {
 &"RESET": SubResource("Animation_ok8vq"),
-&"Shoot": SubResource("Animation_lpwo3")
+&"Shoot": SubResource("Animation_lpwo3"),
+&"new_animation": SubResource("Animation_vbeoa")
 }
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gdc6s"]
