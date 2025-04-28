@@ -19,12 +19,16 @@ func _process(delta: float) -> void:
 
 
 func _on_player_player_hit(damage) -> void:
-	if damage > 0:
-		hit_rect.visible = true
-	hp = hp - damage
-	hp_text.text = str(hp)
-	await get_tree().create_timer(0.3).timeout
-	hit_rect.visible = false
+	if hp <= 0:
+		pass
+	else:
+		if damage > 0:
+			hit_rect.visible = true
+		hp = hp - damage
+		hp_text.text = str(hp)
+		await get_tree().create_timer(0.3).timeout
+		hit_rect.visible = false
+	
 
 
 func _on_player_show_ammo(ammo) -> void:

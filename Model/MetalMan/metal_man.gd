@@ -13,8 +13,14 @@ var damage = 15
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var collison = $CollisionShape3D
+@onready var ouch: AudioStreamPlayer3D = $Ouch
+
+
 
 func _ready():
+	player = get_node(player_path)
+	if player_path.is_empty():
+		player_path = $"../Player".get_path()
 	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
 
@@ -50,8 +56,9 @@ func _hit_finished():
 
 func _on_area_3d_body_part_hit(dam: Variant) -> void:
 	health -= dam
-	if health <= 0:
-		#collison.queue_free() # wsm to trzeba może maskamie trzeba bedzie zmienic
+	if randf() < 0.65:
+		ouch.play()
+	if health <= 0: 
 		anim_tree.set("parameters/conditions/die", true)
 		collison.disabled = true
 		await get_tree().create_timer(4.0).timeout
