@@ -1,14 +1,16 @@
-[gd_scene load_steps=85 format=4 uid="uid://bur2gipe8sjjf"]
+[gd_scene load_steps=89 format=4 uid="uid://bur2gipe8sjjf"]
 
 [ext_resource type="Script" uid="uid://cs0hqjk8lqo3v" path="res://world.gd" id="1_b4b3y"]
 [ext_resource type="Script" uid="uid://bs7lqdh6y4cj0" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_y0a7c"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_8v8v4"]
 [ext_resource type="AudioStream" uid="uid://buym4jfjnm4lw" path="res://Sounds/heathers-gunshot-effect2-100653.mp3" id="3_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://k67o8jc48gkc" path="res://assets/textures/world/Grass_23-128x128.png" id="3_i6hyf"]
+[ext_resource type="PackedScene" uid="uid://3in44kl87ko0" path="res://revolver.tscn" id="3_wukud"]
 [ext_resource type="Texture2D" uid="uid://b7c2a2pv10b1s" path="res://assets/textures/world/Bricks_01-128x128.png" id="4_ju26m"]
 [ext_resource type="Texture2D" uid="uid://bnidtm0e8xhch" path="res://assets/textures/world/Grass_12-128x128.png" id="5_2beig"]
 [ext_resource type="Texture2D" uid="uid://d2qq84fks500l" path="res://assets/textures/world/Bricks_21-128x128.png" id="6_aeg8o"]
 [ext_resource type="Script" uid="uid://bxyelwdabb263" path="res://Player.gd" id="7_24w7t"]
+[ext_resource type="Script" uid="uid://ddga732klxsij" path="res://Weapon_sway.gd" id="8_wukud"]
 [ext_resource type="PackedScene" uid="uid://c2dtp082jtuyx" path="res://Model/MetalMan/metal_man.tscn" id="9_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://chcxaok64htpj" path="res://gun_prism.tscn" id="9_c222f"]
 [ext_resource type="AudioStream" uid="uid://divvuk721yywq" path="res://Sounds/item-equip-6904.mp3" id="9_cbp6q"]
@@ -20,10 +22,14 @@
 [ext_resource type="Script" uid="uid://cww3q758k6rm4" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="13_dxnol"]
 [ext_resource type="Script" uid="uid://bqnh8ntgxyi7" path="res://spawner.gd" id="20_26xuy"]
 [ext_resource type="PackedScene" uid="uid://c4pfra246ju0m" path="res://ammo_pickup.tscn" id="21_bc84e"]
+[ext_resource type="PackedScene" uid="uid://blqd04vy680a4" path="res://level_finish.tscn" id="21_il2jm"]
+[ext_resource type="PackedScene" uid="uid://kwgpmrbpy56u" path="res://secret.tscn" id="24_wjb0r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4bcb7"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.248606, 0.424171, 0.814055, 1)
+sky_horizon_color = Color(0.368981, 0.505204, 0.769519, 1)
+ground_bottom_color = Color(0.752532, 0.689, 0.616158, 1)
+sun_angle_max = 39.7
 
 [sub_resource type="Sky" id="Sky_kob2k"]
 sky_material = SubResource("ProceduralSkyMaterial_4bcb7")
@@ -33,6 +39,10 @@ background_mode = 2
 sky = SubResource("Sky_kob2k")
 tonemap_mode = 2
 glow_enabled = true
+fog_light_color = Color(0.739811, 0.76485, 0.804196, 1)
+fog_density = 0.001
+fog_sky_affect = 0.035
+adjustment_enabled = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0v5n0"]
 
@@ -431,10 +441,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.642268, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0536e-08, 5.95464e-08, 5.94882e-08)
-fov = 37.8493
+cull_mask = 1048571
 
 [node name="GunBall" type="MeshInstance3D" parent="Player/Head/Camera3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_ctx7o")
 surface_material_override/0 = SubResource("StandardMaterial3D_xy0y2")
 
@@ -463,6 +474,14 @@ shakerPreset = SubResource("Resource_x31kc")
 
 [node name="Hand" type="Node3D" parent="Player/Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38635, -0.461416, -0.82394)
+script = ExtResource("8_wukud")
+left = 0.1
+right = 0.1
+up = 0.1
+down = 0.1
+
+[node name="Revolver" parent="Player/Head/Camera3D/Hand" instance=ExtResource("3_wukud")]
+transform = Transform3D(-0.3, 2.46234e-09, 4.52318e-08, 0, 0.299556, -0.0163073, -4.52987e-08, -0.0163073, -0.299556, -0.889871, 0.226688, 1.22248)
 
 [node name="GunPrism" parent="Player/Head/Camera3D/Hand" instance=ExtResource("9_c222f")]
 skeleton = NodePath("../..")
@@ -579,8 +598,10 @@ stream = ExtResource("9_cbp6q")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.816027, -0.0838093, -0.571906, 0.522435, -0.316399, 0.791804, -0.247311, -0.944917, -0.214405, 0, 8.505, 0)
+light_color = Color(0.990456, 1, 0.753812, 1)
 light_energy = 2.275
 shadow_enabled = true
+shadow_reverse_cull_face = true
 shadow_blur = 0.0
 
 [node name="UI" type="Control" parent="."]
@@ -926,16 +947,12 @@ shape = SubResource("ConvexPolygonShape3D_4c25i")
 [node name="entity_0_brush_31_collision_shape" type="CollisionShape3D" parent="Enviroment/NavigationRegion3D/FuncGodotMap2/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_c4x2v")
 
-[node name="MetalMan" parent="Enviroment/NavigationRegion3D" instance=ExtResource("9_2u3nc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.3735, 4.32088, -4.76818)
-player_path = NodePath("../../../Player")
+[node name="LevelFinish" parent="." instance=ExtResource("21_il2jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84365, 2.29713, 0)
 
 [node name="Ammo_pickup" parent="." instance=ExtResource("21_bc84e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.471904, 1.78986, 8.18669)
 player_path = NodePath("../Player")
-
-[node name="MetalMan" parent="." instance=ExtResource("9_2u3nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9199, 3.78328, 5.29245)
 
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5098, 7.17068, 37.7356)
@@ -945,6 +962,13 @@ script = ExtResource("20_26xuy")
 mesh = SubResource("SphereMesh_cbp6q")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_26xuy")
+
+[node name="MetalMan" parent="." instance=ExtResource("9_2u3nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1001, 2.44003, -1.72279)
+player_path = NodePath("../Player")
+
+[node name="Secret" parent="." instance=ExtResource("24_wjb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7043, 1, -7.65959)
 
 [connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
 [connection signal="show_ammo" from="Player" to="." method="_on_player_show_ammo"]

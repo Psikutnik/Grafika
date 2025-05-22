@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b54n7m7boopkd"
-path.s3tc="res://.godot/imported/Grass_01-128x128.png-b9666cb440cd46759ff540f6be99a43a.s3tc.ctex"
+uid="uid://cfltnatf7oavb"
+path.s3tc="res://.godot/imported/Revolver_TBLACK_1.png-5d84416bb7df7fa3139803b22ba34b01.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "5f5745d262f6b7f3e17558335e6ebbc7"
+}
 
 [deps]
 
-source_file="res://assets/textures/world/Grass_01-128x128.png"
-dest_files=["res://.godot/imported/Grass_01-128x128.png-b9666cb440cd46759ff540f6be99a43a.s3tc.ctex"]
+source_file="res://Model/Revolver_TBLACK_1.png"
+dest_files=["res://.godot/imported/Revolver_TBLACK_1.png-5d84416bb7df7fa3139803b22ba34b01.s3tc.ctex"]
 
 [params]
 

@@ -44,4 +44,3 @@ void fragment() {
 	vec3 col = palette(min_dist - 10.0, color_a, color_b, color_c, color_d);
 	COLOR = vec4(col, 0.8);
 }
-

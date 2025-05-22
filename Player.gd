@@ -57,6 +57,8 @@ var bullets_in_chamber = 0
 @onready var gun_anim = $Head/Camera3D/GunBall/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/GunBall/RayCast3D
 @onready var gun_flash = $Head/Camera3D/GunBall/MuzzleFlash
+#Revolver
+@onready var revolver_anim = $Head/Camera3D/Hand/Revolver/AnimationPlayer
 # GunPrism
 var prism_ammo = 66
 @onready var prism_anim = $Head/Camera3D/Hand/GunPrism/AnimationPlayer
@@ -91,6 +93,7 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	#revolver_anim.play("Default")
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -166,6 +169,7 @@ func _physics_process(delta):
 				if prism_ammo > 0:
 					shoot_prism()
 	
+	
 		# Weapon Switching
 	if Input.is_action_just_pressed("weapon1") and weapon != weapons.BALL and !prism_anim.is_playing() and weapon_availability[weapons.BALL] == true:
 		bullets_in_chamber = 0
@@ -197,11 +201,13 @@ func flash(f):
 	f.hide()
 
 func shoot_gun_ball():
-	if(!gun_anim.is_playing()):
+	if(!revolver_anim.is_playing()):
 		if (bullets_in_chamber < 6):
 			bullets_in_chamber += 1
 			gun_anim.speed_scale = 0.8
 			gun_anim.play("Shoot")
+			revolver_anim.speed_scale = 4.5
+			revolver_anim.play("Shoot")
 			gun_ammo = gun_ammo - 1
 			emit_signal("show_ammo",gun_ammo)
 			flash(gun_flash)
@@ -219,6 +225,8 @@ func shoot_gun_ball():
 		else:
 			gun_anim.speed_scale = 1
 			gun_anim.play("Reload")
+			revolver_anim.speed_scale = 2.2
+			revolver_anim.play("Reload")
 			bullets_in_chamber = 0
 
 func shoot_prism():

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b54n7m7boopkd"
-path.s3tc="res://.godot/imported/Grass_01-128x128.png-b9666cb440cd46759ff540f6be99a43a.s3tc.ctex"
+uid="uid://dohwnuvdsexd6"
+path.s3tc="res://.godot/imported/gobbledygook32-1x.png-bcd9fc2840fa5ba7aad9cea552a1511e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/world/Grass_01-128x128.png"
-dest_files=["res://.godot/imported/Grass_01-128x128.png-b9666cb440cd46759ff540f6be99a43a.s3tc.ctex"]
+source_file="res://assets/textures/gobbledygook32-1x.png"
+dest_files=["res://.godot/imported/gobbledygook32-1x.png-bcd9fc2840fa5ba7aad9cea552a1511e.s3tc.ctex"]
 
 [params]
 

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b54n7m7boopkd"
-path.s3tc="res://.godot/imported/Grass_01-128x128.png-b9666cb440cd46759ff540f6be99a43a.s3tc.ctex"
+uid="uid://bvmwjxud84o28"
+path.s3tc="res://.godot/imported/Revolver_Tileable metal scratch rust texture (16) (1).jpg-37fa2d38585de5a09455daf009f089dd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "6be81789ed3286fc70776d9ecb05db73"
+}
 
 [deps]
 
-source_file="res://assets/textures/world/Grass_01-128x128.png"
-dest_files=["res://.godot/imported/Grass_01-128x128.png-b9666cb440cd46759ff540f6be99a43a.s3tc.ctex"]
+source_file="res://Model/Revolver_Tileable metal scratch rust texture (16) (1).jpg"
+dest_files=["res://.godot/imported/Revolver_Tileable metal scratch rust texture (16) (1).jpg-37fa2d38585de5a09455daf009f089dd.s3tc.ctex"]
 
 [params]
 

@@ -7,17 +7,19 @@ var health = 5.0
 var speed = 12.0
 const ATTACK_RANGE = 2
 var damage = 15
-
+var is_dead = false
 @export var player_path : NodePath
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var collison = $CollisionShape3D
 @onready var ouch: AudioStreamPlayer3D = $Ouch
-
+var level_number = 1
 
 
 func _ready():
+	level_number = LevelFinish.level_number
+	FileSave.enemy_update(level_number)
 	player = get_node(player_path)
 	if player_path.is_empty():
 		player_path = $"../Player".get_path()
@@ -56,9 +58,12 @@ func _hit_finished():
 
 func _on_area_3d_body_part_hit(dam: Variant) -> void:
 	health -= dam
-	if randf() < 0.65:
+	if randf() < 1:
 		ouch.play()
-	if health <= 0: 
+	if health <= 0 && not is_dead: 
+		is_dead = true
+		FileSave.kill_update(level_number)
+		
 		anim_tree.set("parameters/conditions/die", true)
 		collison.disabled = true
 		await get_tree().create_timer(4.0).timeout

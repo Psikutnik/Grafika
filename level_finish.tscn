@@ -1,0 +1,195 @@
+[gd_scene load_steps=11 format=3 uid="uid://blqd04vy680a4"]
+
+[ext_resource type="Script" uid="uid://c4xshyufdfwfs" path="res://level_finish.gd" id="1_pywa0"]
+[ext_resource type="FontFile" uid="uid://cxm1tlp8v31jh" path="res://Call of Ops Duty.otf" id="2_5k0gx"]
+[ext_resource type="Shader" uid="uid://dwr1i1vnsojeb" path="res://voronoi.gdshader" id="2_46528"]
+[ext_resource type="AudioStream" uid="uid://ckdcgj8prdcy0" path="res://Sounds/Intermision_one.wav" id="4_ha3bg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5k0gx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pywa0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vrkn"]
+shader = ExtResource("2_46528")
+shader_parameter/resolution = Vector2(1152, 648)
+shader_parameter/color_a = Color(0.172549, 0.172549, 0.772549, 1)
+shader_parameter/color_b = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/color_c = Color(0.69, 0.69, 0.69, 1)
+shader_parameter/color_d = Color(0.243137, 0.203922, 0.305882, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_17pwo"]
+font = ExtResource("2_5k0gx")
+font_size = 90
+font_color = Color(0.666667, 0, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_46528"]
+font = ExtResource("2_5k0gx")
+font_size = 32
+font_color = Color(1, 1, 0.172549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ha3bg"]
+font = ExtResource("2_5k0gx")
+font_size = 32
+font_color = Color(0.756863, 0.0941176, 0.0784314, 1)
+
+[node name="LevelFinish" type="Area3D"]
+script = ExtResource("1_pywa0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5k0gx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pywa0")
+
+[node name="FinnishMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="FinnishMenu"]
+material = SubResource("ShaderMaterial_7vrkn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Tytul" type="Label" parent="FinnishMenu"]
+layout_mode = 1
+offset_right = 652.0
+offset_bottom = 193.0
+text = "POZIOM
+UKONCZONY"
+label_settings = SubResource("LabelSettings_17pwo")
+
+[node name="Zabojstwa" type="Label" parent="FinnishMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00434028
+anchor_top = 0.320988
+anchor_right = 0.25
+anchor_bottom = 0.373457
+grow_horizontal = 2
+text = "Zabojstwa 12 na 50"
+label_settings = SubResource("LabelSettings_46528")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sekrety" type="Label" parent="FinnishMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00607639
+anchor_top = 0.385802
+anchor_right = 0.217882
+anchor_bottom = 0.438272
+grow_horizontal = 2
+text = "Sekrety 20 na 50"
+label_settings = SubResource("LabelSettings_46528")
+metadata/_edit_use_anchors_ = true
+
+[node name="Czas" type="Label" parent="FinnishMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0078125
+anchor_top = 0.458333
+anchor_right = 0.152778
+anchor_bottom = 0.510802
+grow_horizontal = 2
+text = "CZAS 12,45"
+label_settings = SubResource("LabelSettings_46528")
+metadata/_edit_use_anchors_ = true
+
+[node name="Best" type="Label" parent="FinnishMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00347222
+anchor_top = 0.518519
+anchor_right = 0.148438
+anchor_bottom = 0.570988
+grow_horizontal = 2
+text = "BEST  12,45"
+label_settings = SubResource("LabelSettings_ha3bg")
+metadata/_edit_use_anchors_ = true
+
+[node name="NextLevel" type="Button" parent="FinnishMenu"]
+layout_mode = 0
+anchor_left = 0.590278
+anchor_top = 0.0648148
+anchor_right = 0.77691
+anchor_bottom = 0.270062
+text = "NEXT
+LEVEL"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="FinnishMenu/NextLevel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Restart" type="Button" parent="FinnishMenu"]
+layout_mode = 0
+anchor_left = 0.751736
+anchor_top = 0.378086
+anchor_right = 0.938368
+anchor_bottom = 0.583333
+text = "RESTART"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="FinnishMenu/Restart"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Button" parent="FinnishMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484375
+anchor_top = 0.655864
+anchor_right = 0.671007
+anchor_bottom = 0.861111
+text = "MAIN
+MENU"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="FinnishMenu/Menu"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+process_mode = 3
+stream = ExtResource("4_ha3bg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="pressed" from="FinnishMenu/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="FinnishMenu/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="FinnishMenu/Menu" to="." method="_on_menu_pressed"]

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Shaker="*res://addons/shaker/src/Shaker.gd"
 FileSave="*res://file_save.gd"
+LevelFinish="*res://level_finish.gd"
 
 [editor_plugins]
 
