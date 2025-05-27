@@ -8,6 +8,7 @@ var speed = 12.0
 const ATTACK_RANGE = 2
 var damage = 15
 var is_dead = false
+var hunting = false
 @export var player_path : NodePath
 
 @onready var nav_agent = $NavigationAgent3D
@@ -29,6 +30,8 @@ func _ready():
 func _process(delta):
 	velocity = Vector3.ZERO
 	
+	
+	
 	match state_machine.get_current_node():
 		"Walk":
 			# Navigation
@@ -41,9 +44,14 @@ func _process(delta):
 			pass
 			# Navigation
 	
+		"Default":
+			velocity.y -= 3 * delta
+			# Navigation
+	
 	# Conditions
-	anim_tree.set("parameters/conditions/Attack", _target_in_range())
-	anim_tree.set("parameters/conditions/Walk", !_target_in_range())
+	if hunting:
+		anim_tree.set("parameters/conditions/Attack", _target_in_range())
+		anim_tree.set("parameters/conditions/Walk", !_target_in_range())
 	
 	move_and_slide()
 
@@ -57,6 +65,7 @@ func _hit_finished():
 
 
 func _on_area_3d_body_part_hit(dam: Variant) -> void:
+	hunting = true
 	health -= dam
 	if randf() < 1:
 		ouch.play()
@@ -68,3 +77,8 @@ func _on_area_3d_body_part_hit(dam: Variant) -> void:
 		collison.disabled = true
 		await get_tree().create_timer(4.0).timeout
 		queue_free()
+
+
+func _on_detection_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		hunting = true

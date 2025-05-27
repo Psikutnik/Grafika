@@ -34,10 +34,10 @@ enum weapons {
 
 var weapon_availability = {
 	weapons.BALL: true,
-	weapons.PRISM: false
+	weapons.PRISM: true
 }
 
-var weapon = weapons.PRISM
+var weapon = weapons.BALL
 var can_shoot = true
 @onready var weapon_switching = $Head/Camera3D/WeaponSwitching
 
@@ -62,6 +62,8 @@ var bullets_in_chamber = 0
 # GunPrism
 var prism_ammo = 66
 @onready var prism_anim = $Head/Camera3D/Hand/GunPrism/AnimationPlayer
+@onready var shotgun_anim = $Head/Camera3D/Hand/Shotgun/AnimationPlayer
+
 @onready var prism_barrel = $Head/Camera3D/Hand/GunPrism/Barrel
 @onready var prism_flash = $Head/Camera3D/Hand/GunPrism/MuzzleFlash
 @onready var p_ray1 = $Head/Camera3D/PrismRays/PRay1
@@ -230,9 +232,11 @@ func shoot_gun_ball():
 			bullets_in_chamber = 0
 
 func shoot_prism():
-	if !prism_anim.is_playing():
-		prism_anim.speed_scale = 0.8
+	if !shotgun_anim.is_playing():
+		prism_anim.speed_scale = 1.5
 		prism_anim.play("Shoot")
+		shotgun_anim.speed_scale = 1.5
+		shotgun_anim.play("Shoot")
 		prism_ammo = prism_ammo - 1
 		emit_signal("show_ammo",prism_ammo)
 		# Tablica z raycastami
@@ -258,9 +262,9 @@ func shoot_prism():
 func _lower_weapon():
 	match weapon:
 		weapons.BALL:
-			weapon_switching.play("LowerBall")
+			weapon_switching.play("LowerRevolver")
 		weapons.PRISM:
-			weapon_switching.play("LowerPrism")
+			weapon_switching.play("LowerShotgun")
 
 
 func _raise_weapon(new_weapon):
@@ -269,9 +273,9 @@ func _raise_weapon(new_weapon):
 	await get_tree().create_timer(0.3).timeout
 	match new_weapon:
 		weapons.BALL:
-			weapon_switching.play_backwards("LowerBall")
+			weapon_switching.play_backwards("LowerRevolver")
 		weapons.PRISM:
-			weapon_switching.play_backwards("LowerPrism")
+			weapon_switching.play_backwards("LowerShotgun")
 	weapon = new_weapon
 	can_shoot = true
 

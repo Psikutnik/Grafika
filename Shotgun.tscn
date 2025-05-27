@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://dm1qs56u04307"]
+
+[ext_resource type="PackedScene" uid="uid://bdbcnqedpx5an" path="res://Shotgun.glb" id="1_ndngi"]
+[ext_resource type="Texture2D" uid="uid://dw4ndvuaj1613" path="res://assets/textures/world/Bricks_04-128x128.png" id="2_crxyp"]
+[ext_resource type="Texture2D" uid="uid://dwo25r30ujoc3" path="res://assets/textures/world/Grass_02-128x128.png" id="3_dmitx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nn84"]
+albedo_color = Color(0.960359, 0.882475, 0.785988, 1)
+albedo_texture = ExtResource("2_crxyp")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6p7mv"]
+albedo_color = Color(0.419813, 0.419813, 0.419813, 1)
+albedo_texture = ExtResource("3_dmitx")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crxyp"]
+albedo_color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmitx"]
+albedo_color = Color(0.470076, 0.470076, 0.470076, 1)
+metallic = 0.55
+roughness = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dc32y"]
+albedo_color = Color(0.139134, 0.113704, 0.0150094, 1)
+metallic_specular = 0.0
+
+[node name="Shotgun" instance=ExtResource("1_ndngi")]
+
+[node name="Skeleton3D" parent="metarig_001" index="0"]
+bones/17/position = Vector3(-0.0365016, 0.200066, -0.0503922)
+bones/17/rotation = Quaternion(0.00797037, 0.310504, -0.761991, -0.568236)
+bones/18/rotation = Quaternion(0.380744, 0.210762, 0.110867, 0.893489)
+bones/19/rotation = Quaternion(-0.304619, -0.24112, 0.00604037, 0.921429)
+bones/21/position = Vector3(0.0153233, 0.0675641, -0.00631215)
+bones/21/rotation = Quaternion(0.285347, -0.0628023, 0.00517822, 0.956351)
+bones/22/rotation = Quaternion(0.100936, 0.176127, -0.0566753, 0.977537)
+bones/23/rotation = Quaternion(0.400758, 0.145518, -0.051812, 0.903069)
+bones/24/position = Vector3(0.000135875, 0.0156007, 0.00109257)
+bones/24/rotation = Quaternion(-0.0574405, -0.77674, -0.520182, 0.350409)
+bones/24/scale = Vector3(1.0402, 1.0402, 1.0402)
+bones/25/rotation = Quaternion(0.316781, -0.086881, -0.0187305, 0.944326)
+bones/27/position = Vector3(0.00252513, 0.0534508, -0.0072663)
+bones/27/rotation = Quaternion(0.374897, 0.0489299, 0.107692, 0.919489)
+bones/27/scale = Vector3(1.16427, 1.16427, 1.16427)
+bones/28/rotation = Quaternion(0.568491, 0.150457, -0.0391558, 0.807866)
+bones/29/rotation = Quaternion(0.418071, -0.0265935, 0.0196849, 0.907812)
+bones/30/rotation = Quaternion(0.060016, -0.203538, 0.0392609, 0.976437)
+bones/31/position = Vector3(-0.0371045, 0.23949, -0.0645428)
+bones/31/rotation = Quaternion(0.139201, 0.160536, 0.977165, -0.000536034)
+bones/31/scale = Vector3(0.891971, 0.891971, 0.891974)
+bones/32/position = Vector3(-0.00199942, 0.14366, -0.0338278)
+bones/32/rotation = Quaternion(0.385274, -0.00621273, -0.0369626, 0.922041)
+bones/33/position = Vector3(-0.00239331, 0.127953, -0.0405402)
+
+[node name="Arms" parent="metarig_001/Skeleton3D" index="0"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_6nn84")
+surface_material_override/1 = SubResource("StandardMaterial3D_6p7mv")
+surface_material_override/2 = SubResource("StandardMaterial3D_crxyp")
+surface_material_override/3 = SubResource("StandardMaterial3D_dmitx")
+surface_material_override/4 = SubResource("StandardMaterial3D_dc32y")

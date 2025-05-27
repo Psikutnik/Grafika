@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c2dtp082jtuyx"]
+[gd_scene load_steps=33 format=4 uid="uid://c2dtp082jtuyx"]
 
 [ext_resource type="Script" uid="uid://b6323l3gr2pvk" path="res://Model/MetalMan/metal_man.gd" id="1_htq2w"]
 [ext_resource type="Texture2D" uid="uid://2kn7pd5omhy7" path="res://Model/MetalMan/Metal Man_Metal046B_1K-JPG_Color.jpg" id="2_rxqt8"]
@@ -206,6 +206,81 @@ tracks/10/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_bajn7"]
+resource_name = "Default"
+length = 0.35
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:Bone")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -4.12805e-07, -3.0724, 5.10834, 0.35, 1, -4.12805e-07, -3.0724, 5.10834)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:Bone")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.500503, 0.51396, 0.499106, 0.486039, 0.35, 1, 0.500503, 0.51396, 0.499106, 0.486039)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:Bone.001")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array()
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:Bone.002")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array()
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:Bone.003")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.930091, 0.0289617, 0.00343691, 0.36617, 0.35, 1, 0.930091, 0.0289617, 0.00343691, 0.36617)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:Bone.005")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.923797, -0.0383985, 0.0158208, 0.380623, 0.35, 1, -0.923797, -0.0383985, 0.0158208, 0.380623)
+tracks/6/type = "position_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:Bone.007")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array()
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:Bone.007")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -0.991334, -0.0997472, -0.0120189, 0.0846386, 0.35, 1, -0.991334, -0.0997472, -0.0120189, 0.0846386)
+tracks/8/type = "position_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:Bone.009")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array()
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:Bone.009")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.989932, 0.0920805, -0.00805891, 0.107196, 0.35, 1, 0.989932, 0.0920805, -0.00805891, 0.107196)
+
 [sub_resource type="Animation" id="Animation_rxqt8"]
 resource_name = "Die"
 length = 0.35
@@ -359,6 +434,7 @@ tracks/9/keys = PackedFloat32Array(0, 1, 0.992201, 0.0862939, -0.00838346, 0.089
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bajn7"]
 _data = {
 &"Attack": SubResource("Animation_htq2w"),
+&"Default": SubResource("Animation_bajn7"),
 &"Die": SubResource("Animation_rxqt8"),
 &"Walk": SubResource("Animation_i1p70")
 }
@@ -368,6 +444,9 @@ height = 2.39501
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_htq2w"]
 animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bajn7"]
+animation = &"Default"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i1p70"]
 animation = &"Die"
@@ -386,9 +465,6 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_htq2w"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bajn7"]
 advance_mode = 2
 advance_condition = &"die"
@@ -397,14 +473,27 @@ advance_condition = &"die"
 advance_mode = 2
 advance_condition = &"die"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nsgxu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0178y"]
+xfade_time = 0.4
+advance_mode = 2
+advance_condition = &"Walk"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i1p70"]
 states/Attack/node = SubResource("AnimationNodeAnimation_htq2w")
 states/Attack/position = Vector2(516, 100)
+states/Default/node = SubResource("AnimationNodeAnimation_bajn7")
+states/Default/position = Vector2(274, 24)
 states/Die/node = SubResource("AnimationNodeAnimation_i1p70")
 states/Die/position = Vector2(399, 218)
 states/Walk/node = SubResource("AnimationNodeAnimation_rxqt8")
 states/Walk/position = Vector2(365, 100)
-transitions = ["Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_rxqt8"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_i1p70"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_htq2w"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_bajn7"), "Attack", "Die", SubResource("AnimationNodeStateMachineTransition_sls7k")]
+transitions = ["Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_rxqt8"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_i1p70"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_bajn7"), "Attack", "Die", SubResource("AnimationNodeStateMachineTransition_sls7k"), "Start", "Default", SubResource("AnimationNodeStateMachineTransition_nsgxu"), "Default", "Walk", SubResource("AnimationNodeStateMachineTransition_0178y")]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1p70"]
+size = Vector3(50, 10, 50)
 
 [node name="MetalMan" type="CharacterBody3D"]
 script = ExtResource("1_htq2w")
@@ -421,15 +510,15 @@ bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(-0.184183, 0.682698, -0.184183, 0.682698)
+bones/0/position = Vector3(-4.12805e-07, -3.0724, 5.10834)
+bones/0/rotation = Quaternion(0.500503, 0.51396, 0.499106, 0.486039)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 1, 0)
-bones/1/rotation = Quaternion(0, -8.94073e-08, 0.15151, 0.988456)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
@@ -443,7 +532,7 @@ bones/3/parent = 1
 bones/3/rest = Transform3D(1, 0, 4.76837e-07, 3.33949e-07, -0.713807, -0.700342, 3.4037e-07, 0.700342, -0.713808, 0, 1.34258, 1.13758)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.34258, 1.13758)
-bones/3/rotation = Quaternion(0.925691, 9.01892e-08, 2.20702e-07, 0.378281)
+bones/3/rotation = Quaternion(0.930091, 0.0289617, 0.00343691, 0.36617)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Bone.004"
 bones/4/parent = 3
@@ -457,7 +546,7 @@ bones/5/parent = 1
 bones/5/rest = Transform3D(1, -9.24205e-08, 4.38352e-07, -3.74394e-07, -0.709752, 0.704452, 2.46016e-07, -0.704452, -0.709751, 6.56309e-08, 1.30253, -1.23144)
 bones/5/enabled = true
 bones/5/position = Vector3(6.56309e-08, 1.30253, -1.23144)
-bones/5/rotation = Quaternion(0.924595, -1.26221e-07, 1.85045e-07, -0.380952)
+bones/5/rotation = Quaternion(0.923797, 0.0383985, -0.0158208, -0.380623)
 bones/5/scale = Vector3(1, 1, 0.999999)
 bones/6/name = "Bone.006"
 bones/6/parent = 5
@@ -470,8 +559,8 @@ bones/7/name = "Bone.007"
 bones/7/parent = 0
 bones/7/rest = Transform3D(0.984977, 0.172684, 0.00100195, 0.17054, -0.973627, 0.151551, 0.0271459, -0.149103, -0.988449, 0, -0.0304298, -0.343225)
 bones/7/enabled = true
-bones/7/position = Vector3(0.341575, -0.0231308, -0.37695)
-bones/7/rotation = Quaternion(0.929133, 0.348507, 0.0328648, -0.119061)
+bones/7/position = Vector3(0, -0.0304298, -0.343225)
+bones/7/rotation = Quaternion(0.991334, 0.0997472, 0.0120189, -0.0846386)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Bone.008"
 bones/8/parent = 7
@@ -484,8 +573,8 @@ bones/9/name = "Bone.009"
 bones/9/parent = 0
 bones/9/rest = Transform3D(0.984963, 0.172743, -0.0011808, 0.16974, -0.969068, -0.179151, -0.0320914, 0.176258, -0.983818, 0, -0.0242209, 0.332601)
 bones/9/enabled = true
-bones/9/position = Vector3(1.69995e-09, -0.0242211, 0.332601)
-bones/9/rotation = Quaternion(0.471007, 0.877582, 0.0702912, 0.0553302)
+bones/9/position = Vector3(0, -0.0242209, 0.332601)
+bones/9/rotation = Quaternion(0.989932, 0.0920805, -0.00805891, 0.107196)
 bones/9/scale = Vector3(0.999997, 1, 0.999997)
 bones/10/name = "Bone.010"
 bones/10/parent = 9
@@ -500,7 +589,7 @@ mesh = SubResource("ArrayMesh_6cxjk")
 skin = SubResource("Skin_vkw5u")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(1.7675e-07, -2.70921e-08, 1, -0.220996, 0.975275, 6.54833e-08, -0.975275, -0.220996, 1.66393e-07, -4.19887e-08, 2.37584, -0.845475)
+transform = Transform3D(-0.0265245, 0.0293071, 0.999219, 0.999648, 0.000778794, 0.026513, -1.19209e-06, 0.99957, -0.0293174, 0.0747284, -3.07041, 7.65709)
 visible = false
 bone_name = "Bone.002"
 bone_idx = 2
@@ -509,14 +598,13 @@ bone_idx = 2
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_rxqt8")
-damage = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Metal Man/Armature/GeneralSkeleton/BoneAttachment3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.706554, 0)
 shape = SubResource("SphereShape3D_i1p70")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(1.7675e-07, -2.70921e-08, 1, -0.220996, 0.975275, 6.54833e-08, -0.975275, -0.220996, 1.66393e-07, 0, 0.864307, -0.502965)
+transform = Transform3D(-0.0265245, 0.0293071, 0.999219, 0.999648, 0.000778794, 0.026513, -1.19209e-06, 0.99957, -0.0293174, 0.0293067, -3.07162, 6.10791)
 visible = false
 bone_name = "Bone.001"
 bone_idx = 1
@@ -531,7 +619,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496118, 0)
 shape = SubResource("CapsuleShape3D_bajn7")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(5.1712e-07, 0.700342, -0.713807, -0.220995, -0.696158, -0.683027, -0.975275, 0.157748, 0.154772, 1.13758, 2.17369, -0.799669)
+transform = Transform3D(-0.0396317, 0.658048, -0.751932, 0.997599, 0.0688348, 0.0076604, 0.0568, -0.749823, -0.659196, 1.20535, -3.04042, 7.41656)
 visible = false
 bone_name = "Bone.003"
 bone_idx = 3
@@ -546,7 +634,7 @@ transform = Transform3D(1, -4.65661e-10, 0, -4.65661e-10, 1, -3.4941e-08, -4.656
 shape = SubResource("CapsuleShape3D_sls7k")
 
 [node name="BoneAttachment3D4" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(6.25764e-07, 0.336593, -0.941651, -0.220995, -0.918368, -0.32827, -0.975275, 0.208101, 0.0743849, 1.79276, 1.52242, -0.652093)
+transform = Transform3D(-0.0396316, 0.282211, -0.958534, 0.997599, 0.0657053, -0.0219018, 0.0567998, -0.9571, -0.284138, 1.82096, -2.97602, 6.71509)
 visible = false
 bone_name = "Bone.004"
 bone_idx = 4
@@ -561,7 +649,7 @@ transform = Transform3D(1, -4.6565e-10, 0, -4.65652e-10, 1, -5.96046e-08, -4.656
 shape = SubResource("CapsuleShape3D_nsgxu")
 
 [node name="BoneAttachment3D5" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(4.22765e-07, -0.704452, -0.709751, -0.220996, -0.692203, 0.687034, -0.975275, 0.156852, -0.155681, -1.23144, 2.13463, -0.790819)
+transform = Transform3D(-0.0240006, -0.726193, -0.687071, 0.996265, 0.0396526, -0.0767114, 0.0829515, -0.686347, 0.722528, -1.163, -3.10326, 7.44598)
 visible = false
 bone_name = "Bone.005"
 bone_idx = 5
@@ -576,7 +664,7 @@ transform = Transform3D(1, -4.65661e-10, 0, -4.65661e-10, 1, -3.4941e-08, -4.656
 shape = SubResource("CapsuleShape3D_sls7k")
 
 [node name="BoneAttachment3D6" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(6.02361e-07, -0.315554, -0.948907, -0.220996, -0.925446, 0.307751, -0.975275, 0.209704, -0.0697365, -1.80371, 1.57231, -0.663399)
+transform = Transform3D(-0.0240004, -0.34511, -0.938255, 0.996265, 0.0696182, -0.0510911, 0.0829517, -0.935977, 0.342149, -1.75293, -3.07104, 6.88842)
 visible = false
 bone_name = "Bone.006"
 bone_idx = 6
@@ -591,7 +679,7 @@ transform = Transform3D(1, -4.6565e-10, 0, -4.65652e-10, 1, -5.96046e-08, -4.656
 shape = SubResource("CapsuleShape3D_nsgxu")
 
 [node name="BoneAttachment3D7" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(0.144059, -0.198339, -0.969489, 0.173277, -0.959516, 0.222047, -0.97428, -0.199977, -0.103859, -0.37695, -0.191792, -0.283592)
+transform = Transform3D(0.0204298, -0.198887, -0.97981, 0.980699, 0.194592, -0.0190508, 0.194452, -0.960509, 0.199024, -0.343849, -3.08152, 5.08799)
 visible = false
 bone_name = "Bone.007"
 bone_idx = 7
@@ -606,7 +694,7 @@ transform = Transform3D(1, 2.98023e-08, 2.79397e-09, 0, 1, -7.28614e-08, -1.9790
 shape = SubResource("CapsuleShape3D_0178y")
 
 [node name="BoneAttachment3D8" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(0.092642, -0.0980775, -0.990857, -0.149368, -0.985245, 0.0835566, -0.984432, 0.140261, -0.105925, -0.677718, -1.64683, -0.586843)
+transform = Transform3D(-0.0243443, -0.0574166, -0.998053, 0.991324, -0.130377, -0.0166797, -0.129166, -0.9898, 0.0600923, -0.645447, -2.78644, 3.63144)
 visible = false
 bone_name = "Bone.008"
 bone_idx = 8
@@ -621,7 +709,7 @@ transform = Transform3D(1, 2.98023e-08, 2.79397e-09, 0, 1, -7.28614e-08, -1.9790
 shape = SubResource("CapsuleShape3D_y1s1y")
 
 [node name="BoneAttachment3D9" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(-0.0308982, 0.175494, -0.983993, 0.99796, 0.060392, -0.020566, 0.0558161, -0.982626, -0.177002, 0.332601, -0.0209345, 0.0121824)
+transform = Transform3D(-0.0564479, 0.177567, -0.982486, 0.981758, 0.18881, -0.0222822, 0.181546, -0.965827, -0.184985, 0.331631, -3.0636, 5.07438)
 visible = false
 bone_name = "Bone.009"
 bone_idx = 9
@@ -636,7 +724,7 @@ transform = Transform3D(1, 2.98023e-08, 2.79397e-09, 0, 1, -7.28614e-08, -1.9790
 shape = SubResource("CapsuleShape3D_0178y")
 
 [node name="BoneAttachment3D10" type="BoneAttachment3D" parent="Metal Man/Armature/GeneralSkeleton"]
-transform = Transform3D(-0.00460124, -0.0367543, -0.999311, 0.963186, -0.268769, 0.00545022, -0.268786, -0.962503, 0.0366391, 0.598635, 0.0706144, -1.47739)
+transform = Transform3D(-0.0280657, -0.0263253, -0.999257, 0.989081, -0.145393, -0.0239497, -0.144656, -0.989023, 0.0301195, 0.600806, -2.77738, 3.61027)
 visible = false
 bone_name = "Bone.010"
 bone_idx = 10
@@ -675,6 +763,12 @@ stream = ExtResource("4_i1p70")
 volume_db = 80.0
 max_distance = 15.0
 
+[node name="Detection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.2641)
+shape = SubResource("BoxShape3D_i1p70")
+
 [connection signal="body_part_hit" from="Metal Man/Armature/GeneralSkeleton/BoneAttachment3D/Area3D" to="." method="_on_area_3d_body_part_hit"]
 [connection signal="body_part_hit" from="Metal Man/Armature/GeneralSkeleton/BoneAttachment3D2/Area3D" to="." method="_on_area_3d_body_part_hit"]
 [connection signal="body_part_hit" from="Metal Man/Armature/GeneralSkeleton/BoneAttachment3D3/Area3D" to="." method="_on_area_3d_body_part_hit"]
@@ -685,3 +779,4 @@ max_distance = 15.0
 [connection signal="body_part_hit" from="Metal Man/Armature/GeneralSkeleton/BoneAttachment3D8/Area3D" to="." method="_on_area_3d_body_part_hit"]
 [connection signal="body_part_hit" from="Metal Man/Armature/GeneralSkeleton/BoneAttachment3D9/Area3D" to="." method="_on_area_3d_body_part_hit"]
 [connection signal="body_part_hit" from="Metal Man/Armature/GeneralSkeleton/BoneAttachment3D10/Area3D" to="." method="_on_area_3d_body_part_hit"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]

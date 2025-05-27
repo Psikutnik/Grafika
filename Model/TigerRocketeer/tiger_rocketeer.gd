@@ -15,6 +15,7 @@ var has_hit = false
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var collison = $CollisionShape3D
+@onready var ouch: AudioStreamPlayer3D = $Ouch
 
 var bullet = load("res://bullet.tscn")
 var instance
@@ -102,6 +103,7 @@ func _hit_finished():
 
 func _on_area_3d_body_part_hit(dam: Variant) -> void:
 	health -= dam
+	ouch.play()
 	if health <= 0:
 		#collison.queue_free()
 		anim_tree.set("parameters/conditions/Walk", false)
