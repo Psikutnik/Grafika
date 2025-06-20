@@ -90,6 +90,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="STATS" type="Button" parent="MenuNodes/PanelContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "STATS

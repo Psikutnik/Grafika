@@ -1,7 +1,7 @@
 extends Area3D
 
 @export var nextlevel = "res://world.tscn"
-@export var level_number = 1
+@export var level_number = 3
 @onready var finnish_menu: Control = $FinnishMenu
 @onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
@@ -29,6 +29,12 @@ func _ready() -> void:
 		lev_time = FileSave.lev2_time
 		FileSave.lev2_secret = 0
 		FileSave.lev2_secret_found = 0
+	if level_number == 3:
+		FileSave.lev3_enemies = 0
+		FileSave.lev3_kills = 0
+		lev_time = FileSave.lev3_time
+		FileSave.lev3_secret = 0
+		FileSave.lev3_secret_found = 0
 
 
 func _process(delta: float) -> void:
@@ -56,8 +62,11 @@ func _on_body_entered(body: Node3D) -> void:
 			zabojstwa.text = "Zabojstwa " + str(FileSave.lev1_kills) +  " na " + str(FileSave.lev1_enemies) 
 			sekrety.text = "Sekrety " + str(FileSave.lev1_secret_found) + " na " + str(FileSave.lev1_secret)
 		if level_number == 2:
-			zabojstwa.text = "Zabojstwa " + str(FileSave.lev2_kills) +  " na " + str(FileSave.lev2_enemies) 
+			zabojstwa.text = "Zabojstwa " + str(1) +  " na " + str(1)
 			sekrety.text = "Sekrety " + str(FileSave.lev2_secret_found) + " na " + str(FileSave.lev2_secret)
+		if level_number == 3:
+			zabojstwa.text = "Zabojstwa " + str(FileSave.lev3_kills) +  " na " + str(26) 
+			sekrety.text = "Sekrety " + str(FileSave.lev3_secret_found) + " na " + str(FileSave.lev3_secret)
 		#Menu
 		audio.play()
 		finnish_menu.visible = true
@@ -72,7 +81,12 @@ func _on_next_level_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://world.tscn")
+	if level_number == 1:
+		get_tree().change_scene_to_file("res://world.tscn")
+	if level_number == 2:
+		get_tree().change_scene_to_file("res://level_2.tscn")
+	if level_number == 3:
+		get_tree().change_scene_to_file("res://level_1.tscn")
 
 
 func _on_menu_pressed() -> void:

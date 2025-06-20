@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ymnhpmi5pppx"]
+
+[ext_resource type="PackedScene" uid="uid://crkuw6m2ysyce" path="res://Model/Kon/slomany_kon.glb" id="1_f8qqp"]
+[ext_resource type="Script" uid="uid://c2ty3ie447old" path="res://Model/Kon/slomany_kon.gd" id="2_5tpkc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4ygq"]
+size = Vector3(2.62769, 2.06104, 8.15768)
+
+[node name="slomany_kon" instance=ExtResource("1_f8qqp")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+script = ExtResource("2_5tpkc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14833, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0125732, 0.530518, 1.04558)
+shape = SubResource("BoxShape3D_e4ygq")

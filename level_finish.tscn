@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://blqd04vy680a4"]
 
 [ext_resource type="Script" uid="uid://c4xshyufdfwfs" path="res://level_finish.gd" id="1_pywa0"]
-[ext_resource type="FontFile" uid="uid://cxm1tlp8v31jh" path="res://Call of Ops Duty.otf" id="2_5k0gx"]
+[ext_resource type="FontFile" uid="uid://cxm1tlp8v31jh" path="res://Czcionka.otf" id="2_5k0gx"]
 [ext_resource type="Shader" uid="uid://dwr1i1vnsojeb" path="res://voronoi.gdshader" id="2_46528"]
 [ext_resource type="AudioStream" uid="uid://ckdcgj8prdcy0" path="res://Sounds/Intermision_one.wav" id="4_ha3bg"]
 
@@ -41,6 +41,7 @@ script = ExtResource("1_pywa0")
 shape = SubResource("BoxShape3D_5k0gx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_pywa0")
 
 [node name="FinnishMenu" type="Control" parent="."]

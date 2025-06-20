@@ -493,7 +493,7 @@ states/Walk/position = Vector2(365, 100)
 transitions = ["Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_rxqt8"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_i1p70"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_bajn7"), "Attack", "Die", SubResource("AnimationNodeStateMachineTransition_sls7k"), "Start", "Default", SubResource("AnimationNodeStateMachineTransition_nsgxu"), "Default", "Walk", SubResource("AnimationNodeStateMachineTransition_0178y")]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1p70"]
-size = Vector3(50, 10, 50)
+size = Vector3(500, 500, 500)
 
 [node name="MetalMan" type="CharacterBody3D"]
 script = ExtResource("1_htq2w")

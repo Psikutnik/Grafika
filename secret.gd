@@ -2,7 +2,7 @@ extends Area3D
 
 
 @onready var text: Label = $FOUND/text
-var level_number: int = 0
+var level_number
 var is_found = false
 
 func _ready() -> void:

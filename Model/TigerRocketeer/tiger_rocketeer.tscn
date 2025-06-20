@@ -1,17 +1,18 @@
-[gd_scene load_steps=28 format=4 uid="uid://jms146wx5rqi"]
+[gd_scene load_steps=29 format=4 uid="uid://jms146wx5rqi"]
 
 [ext_resource type="Script" uid="uid://claw1jona2q4p" path="res://Model/TigerRocketeer/tiger_rocketeer.gd" id="1_12q4g"]
-[ext_resource type="Texture2D" uid="uid://dw6g63ft1n2yd" path="res://Model/Dum Dum_Metal046B_1K-JPG_Color.jpg" id="2_1ukdy"]
+[ext_resource type="Texture2D" uid="uid://dw6g63ft1n2yd" path="res://Model/Dum Dum_Metal046B_1K-JPG_Color.jpg" id="2_2ph8x"]
 [ext_resource type="Script" uid="uid://bujt5oojs6gxr" path="res://Model/Manequin/BodyPart.gd" id="2_uer6d"]
 [ext_resource type="Texture2D" uid="uid://di477fh8khq5p" path="res://Model/Dum Dum_pytajnik.png" id="3_m8llx"]
 [ext_resource type="AudioStream" uid="uid://bqi4wlv2rtxmn" path="res://Sounds/ough-47202.wav" id="5_m8llx"]
+[ext_resource type="AudioStream" uid="uid://bd3w0574fhxqy" path="res://Sounds/072782_bullet-39717.mp3" id="6_2ph8x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12q4g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm8qf"]
 resource_name = "Head"
-cull_mode = 2
-albedo_texture = ExtResource("2_1ukdy")
+albedo_texture = ExtResource("2_2ph8x")
+metallic = 1.0
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2xn5"]
@@ -515,22 +516,27 @@ animation = &"Die"
 animation = &"Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxyuv"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"Attack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fno3c"]
+xfade_time = 0.2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oqjxv"]
+xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 advance_condition = &"Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o7ynq"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"Die"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ukdy"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"Die"
 
@@ -838,6 +844,11 @@ target_position = Vector3(0, 0, -1)
 stream = ExtResource("5_m8llx")
 volume_db = 80.0
 max_distance = 15.0
+
+[node name="attack" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_2ph8x")
+volume_db = 65.0
+max_distance = 75.0
 
 [connection signal="body_part_hit" from="Dum Dum/metarig_001/Skeleton3D/BoneAttachment3D/Area3D" to="." method="_on_area_3d_body_part_hit"]
 [connection signal="body_part_hit" from="Dum Dum/metarig_001/Skeleton3D/BoneAttachment3D2/Area3D" to="." method="_on_area_3d_body_part_hit"]

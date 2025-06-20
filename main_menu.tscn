@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://dwr1i1vnsojeb" path="res://voronoi.gdshader" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://p2ks2fha0qlw" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="PackedScene" uid="uid://bp5qgw4jrj5tl" path="res://settings.tscn" id="2_7vrkn"]
-[ext_resource type="FontFile" uid="uid://cxm1tlp8v31jh" path="res://Call of Ops Duty.otf" id="4_jix8l"]
+[ext_resource type="FontFile" uid="uid://cxm1tlp8v31jh" path="res://Czcionka.otf" id="4_jix8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vrkn"]
 shader = ExtResource("1_06t4h")

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var speed
 const WALK_SPEED = 6.5 #5
-const SPRINT_SPEED = 32.0 #8
+const SPRINT_SPEED = 7.0 #8
 const JUMP_VELOCITY = 4.8 
 const SENSITIVITY = 0.004
 
@@ -34,7 +34,7 @@ enum weapons {
 
 var weapon_availability = {
 	weapons.BALL: true,
-	weapons.PRISM: true
+	weapons.PRISM: false
 }
 
 var weapon = weapons.BALL
@@ -60,7 +60,7 @@ var bullets_in_chamber = 0
 #Revolver
 @onready var revolver_anim = $Head/Camera3D/Hand/Revolver/AnimationPlayer
 # GunPrism
-var prism_ammo = 66
+var prism_ammo = 0
 @onready var prism_anim = $Head/Camera3D/Hand/GunPrism/AnimationPlayer
 @onready var shotgun_anim = $Head/Camera3D/Hand/Shotgun/AnimationPlayer
 
@@ -95,11 +95,10 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
-	#revolver_anim.play("Default")
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -161,6 +160,18 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("interact"):
+		if main_ray.is_colliding():
+			if main_ray.get_collider().is_in_group("interactable"):
+				var collider = main_ray.get_collider()
+				var collision_point = main_ray.get_collision_point()
+				var distance = global_position.distance_to(collision_point)
+				if distance <= 2:  # np. max_interact_distance = 2.0
+					collider.interact()
+			else:
+				pass
+	
+	
 	# Shooting
 	if Input.is_action_pressed("shoot") and can_shoot:
 		match weapon:
@@ -197,11 +208,6 @@ func hit(dir, damage):
 		emit_signal("player_hit", damage)
 		velocity += dir * 8.0
 
-func flash(f):
-	f.show()
-	await get_tree().create_timer(0.1).timeout
-	f.hide()
-
 func shoot_gun_ball():
 	if(!revolver_anim.is_playing()):
 		if (bullets_in_chamber < 6):
@@ -212,7 +218,6 @@ func shoot_gun_ball():
 			revolver_anim.play("Shoot")
 			gun_ammo = gun_ammo - 1
 			emit_signal("show_ammo",gun_ammo)
-			flash(gun_flash)
 			if main_ray.is_colliding():
 				for i in range(1):
 					var instance = bullet_trail.instantiate()
@@ -248,16 +253,12 @@ func shoot_prism():
 				var instance = bullet_trail.instantiate()
 				get_parent().add_child(instance)
 				instance.init(prism_barrel.global_position, ray.get_collision_point())
+				
 				if ray.get_collider().is_in_group("enemy"):
 					ray.get_collider().hit(0.65)
 					instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, true)
 				else:
 					instance.trigger_particles(ray.get_collision_point(), prism_barrel.global_position, false)
-			else:
-				pass
-				#napraw to później
-				#instance.init(prism_barrel.global_position, ray_end.global_position)
-				#get_parent().add_child(instance)
 
 func _lower_weapon():
 	match weapon:
@@ -279,20 +280,20 @@ func _raise_weapon(new_weapon):
 	weapon = new_weapon
 	can_shoot = true
 
-# jest problem że jak trzymasz np pistolet a podniesiesz ammo shotguna to zacznie ci wyswietlac ammo shotunge
 func collect_ammo(type,amount):
 	if type == "P":
+		audio.volume_db = 50
 		audio.play()
 		prism_ammo = prism_ammo + amount
-		emit_signal("show_ammo",prism_ammo)
+		if weapon == weapons.PRISM:
+			emit_signal("show_ammo",prism_ammo)
 	if type == "G":
+		audio.volume_db = 50
 		audio.play()
 		gun_ammo = gun_ammo + amount
-		emit_signal("show_ammo",gun_ammo)
+		if weapon == weapons.BALL:
+			emit_signal("show_ammo",gun_ammo)
 
 func collect_weapon(weapon: int, is_available: bool) -> void:
 	if weapon in weapons.values():
 		weapon_availability[weapon] = is_available
-		print("Broń ", weapons.keys()[weapon], " jest teraz ", "dostępna" if is_available else "niedostępna")
-	else:
-		print("Nieprawidłowy indeks broni!")

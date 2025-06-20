@@ -16,33 +16,48 @@ var lev2_enemies: int = 0
 var lev2_kills: int = 0
 var lev2_secret: int = 0
 var lev2_secret_found: int = 0
+var lev3_time: float = 9999999999
+var lev3_enemies: int = 0
+var lev3_kills: int = 0
+var lev3_secret: int = 0
+var lev3_secret_found: int = 0
 
 func changeBest(n, czas):
 	if n == 1:
 		lev1_time = czas
 	if n == 2:
 		lev2_time = czas
+	if n == 3:
+		lev3_time = czas
 
 func enemy_update(n):
 	if n == 1:
 		lev1_enemies += 1
 	if n == 2:
 		lev2_enemies += 1
+	if n == 3:
+		lev3_enemies += 1
 
 func kill_update(n):
 	if n == 1:
 		lev1_kills += 1
 	if n == 2:
 		lev2_kills += 1
+	if n == 3:
+		lev3_kills += 1
 
 func secret_update(n):
 	if n == 1:
 		lev1_secret += 1
 	if n == 2:
 		lev2_secret += 1
+	if n == 3:
+		lev3_secret += 1
 
 func secret_found_update(n):
 	if n == 1:
 		lev1_secret_found += 1
 	if n == 2:
 		lev2_secret_found += 1
+	if n == 3:
+		lev3_secret_found += 1

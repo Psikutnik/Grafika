@@ -11,13 +11,17 @@ var amount = 10
 
 
 func _ready():
+	if player_path.is_empty():
+		player_path = $"../Player".get_path()
 	player = get_node(player_path)
 	await get_tree().create_timer(randf_range(0.1, 1.0)).timeout
 	anim.play("Default")
 
 func _on_body_entered(body: Node3D) -> void:
-	player.collect_ammo(type,amount)
-	if player.weapon_availability[1] == false:
-		player.collect_weapon(1,true)
-		player._raise_weapon(1)
-	queue_free()
+	if body.name == "Player":
+		player.collect_ammo(type,amount)
+		player.emit_signal("show_ammo",amount)
+		if player.weapon_availability[1] == false:
+			player.collect_weapon(1,true)
+			player._raise_weapon(1)
+		queue_free()

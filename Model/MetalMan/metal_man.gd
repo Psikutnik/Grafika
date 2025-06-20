@@ -15,13 +15,12 @@ var hunting = false
 @onready var anim_tree = $AnimationTree
 @onready var collison = $CollisionShape3D
 @onready var ouch: AudioStreamPlayer3D = $Ouch
-var level_number = 1
+var level_number
 
 
 func _ready():
 	level_number = LevelFinish.level_number
 	FileSave.enemy_update(level_number)
-	player = get_node(player_path)
 	if player_path.is_empty():
 		player_path = $"../Player".get_path()
 	player = get_node(player_path)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl8rsa4kjk27q"]
+
+[ext_resource type="Script" uid="uid://cc03tapi2ypah" path="res://trigger.gd" id="1_r7rtx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_setfl"]
+size = Vector3(0.648438, 6.58917, 41.8687)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r7rtx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_setfl"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="Trigger" type="Area3D"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("1_r7rtx")
+
+[node name="Places" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_setfl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_r7rtx")
+surface_material_override/0 = SubResource("StandardMaterial3D_setfl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

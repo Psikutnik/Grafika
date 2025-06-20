@@ -9,13 +9,14 @@ const ATTACK_RANGE = 2
 var damage = 5
 var is_attacking = false
 var has_hit = false
-
+var level_number
 @export var player_path : NodePath
-
+var is_dead = false
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var collison = $CollisionShape3D
 @onready var ouch: AudioStreamPlayer3D = $Ouch
+@onready var attack: AudioStreamPlayer3D = $attack
 
 var bullet = load("res://bullet.tscn")
 var instance
@@ -28,6 +29,10 @@ const RANDOM_WALK_INTERVAL = 8.0 # Change direction every 2 seconds
 var current_random_target = null
 
 func _ready():
+	level_number = LevelFinish.level_number
+	FileSave.enemy_update(level_number)
+	if player_path.is_empty():
+		player_path = $"../Player".get_path()
 	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
 	_set_new_random_target() # Set initial random target
@@ -76,7 +81,7 @@ func _process(delta):
 func _set_new_random_target():
 	# Generate random direction and distance
 	var random_angle = randf_range(0, 2 * PI)
-	var random_distance = 5   #randf_range(2.0, 5.0)
+	var random_distance = randf_range(5.0, 8.0)
 	current_random_target = global_transform.origin + Vector3(
 		sin(random_angle) * random_distance,
 		0,
@@ -88,6 +93,7 @@ func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 
 func _hit_finished():
+	attack.play()
 	# Oblicz dokładny kierunek do gracza
 	var target_pos = player.global_position
 	var barrel_pos = rocket_barrel.global_position
@@ -104,8 +110,9 @@ func _hit_finished():
 func _on_area_3d_body_part_hit(dam: Variant) -> void:
 	health -= dam
 	ouch.play()
-	if health <= 0:
-		#collison.queue_free()
+	if health <= 0&& not is_dead:
+		is_dead = true
+		FileSave.kill_update(level_number)
 		anim_tree.set("parameters/conditions/Walk", false)
 		anim_tree.set("parameters/conditions/Attack", false)
 		anim_tree.set("parameters/conditions/Die", true)

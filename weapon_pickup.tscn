@@ -1,14 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://3o3jr3dl0svo"]
+[gd_scene load_steps=7 format=3 uid="uid://3o3jr3dl0svo"]
 
 [ext_resource type="Script" uid="uid://dgy4qlir5rrsc" path="res://weapon_pickup.gd" id="1_61tva"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_61tva"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61tva"]
-albedo_color = Color(0.625597, 0.625597, 0.625597, 1)
-metallic = 1.0
-metallic_specular = 0.0
-roughness = 0.0
+[ext_resource type="PackedScene" uid="uid://4wcj7u82axv7" path="res://SingleShotgun.glb" id="2_wxgof"]
 
 [sub_resource type="Animation" id="Animation_poxno"]
 resource_name = "Default"
@@ -82,8 +75,9 @@ script = ExtResource("1_61tva")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 1.94385, 0, 0.00319177, 0)
-mesh = SubResource("PrismMesh_61tva")
-surface_material_override/0 = SubResource("StandardMaterial3D_61tva")
+
+[node name="SingleShotgun" parent="MeshInstance3D" instance=ExtResource("2_wxgof")]
+transform = Transform3D(4.28571, 0, 0, 0, 4.28571, 0, 0, 0, 1.54333, 0, -0.462055, -0.167964)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MeshInstance3D"]
 root_node = NodePath("../..")
